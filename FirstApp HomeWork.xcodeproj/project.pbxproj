@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E64A2F2427C39155008BC2D4 /* Core Data1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E64A2F2227C39155008BC2D4 /* Core Data1.xcdatamodeld */; };
+		E64A2F7227C56FFC008BC2D4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64A2F7127C56FFC008BC2D4 /* Session.swift */; };
 		E64EEF1E279D4E5D0001748F /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64EEF1D279D4E5D0001748F /* FriendsTableViewController.swift */; };
 		E64EEF21279D52D00001748F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64EEF20279D52D00001748F /* User.swift */; };
 		E64EEF26279D5D600001748F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64EEF25279D5D600001748F /* Group.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E64A2F2327C39155008BC2D4 /* Core Data1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Core Data1.xcdatamodel"; sourceTree = "<group>"; };
+		E64A2F7127C56FFC008BC2D4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		E64EEF1D279D4E5D0001748F /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		E64EEF20279D52D00001748F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E64EEF25279D5D600001748F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				E6E990E427872C0C009787B8 /* Assets.xcassets */,
 				E6E990E627872C0C009787B8 /* LaunchScreen.storyboard */,
 				E6E990E927872C0C009787B8 /* Info.plist */,
+				E64A2F2227C39155008BC2D4 /* Core Data1.xcdatamodeld */,
+				E64A2F7127C56FFC008BC2D4 /* Session.swift */,
 			);
 			path = "FirstApp HomeWork";
 			sourceTree = "<group>";
@@ -249,11 +255,13 @@
 				E64EEF26279D5D600001748F /* Group.swift in Sources */,
 				E657CF9C27A70681000FF02F /* FotoCollectionViewCell.swift in Sources */,
 				E660EA3227B98843004054F8 /* GalleryPhotoCustomView.swift in Sources */,
+				E64A2F2427C39155008BC2D4 /* Core Data1.xcdatamodeld in Sources */,
 				E6E990E027872C0B009787B8 /* LoginViewController.swift in Sources */,
 				E65C822927AF0BC10045C217 /* NewsCollectionViewCell.swift in Sources */,
 				E660EA3627B98ACA004054F8 /* GalleryPhotoViewController.swift in Sources */,
 				E65C822627AF0ABA0045C217 /* News.swift in Sources */,
 				E6E990DC27872C0B009787B8 /* AppDelegate.swift in Sources */,
+				E64A2F7227C56FFC008BC2D4 /* Session.swift in Sources */,
 				E64EEF2C279D67E50001748F /* UserGroupTableViewController.swift in Sources */,
 				E657CF9F27A7112A000FF02F /* FriendsFotoCollectionViewController.swift in Sources */,
 				E64EEF28279D5DF80001748F /* GlobalGroupTableViewController.swift in Sources */,
@@ -482,6 +490,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E64A2F2227C39155008BC2D4 /* Core Data1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E64A2F2327C39155008BC2D4 /* Core Data1.xcdatamodel */,
+			);
+			currentVersion = E64A2F2327C39155008BC2D4 /* Core Data1.xcdatamodel */;
+			path = "Core Data1.xcdatamodeld";
+			sourceTree = "<group>";
+			usesTabs = 0;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E6E990D027872C0B009787B8 /* Project object */;
 }
