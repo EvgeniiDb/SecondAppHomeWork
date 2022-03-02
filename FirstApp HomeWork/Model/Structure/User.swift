@@ -9,7 +9,10 @@ import Foundation
 import UIKit
 
 struct User {
-    let name: String
-    let image: UIImage
+    
+    var name: String
+    var avatar: String
+    var photoArray: [UIImage]?
+    var owner_id: String
 }
 
