@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loadingView1: UIView!
     @IBOutlet weak var loadingView2: UIView!
     @IBOutlet weak var loadingView3: UIView!
+
+    
     
     let segueIdentifierToTabBar = "reuseIdentifierToTabBar"
     

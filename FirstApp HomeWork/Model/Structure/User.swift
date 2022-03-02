@@ -11,8 +11,8 @@ import UIKit
 struct User {
     
     var name: String
-    var avatar: UIImage?
+    var avatar: String
     var photoArray: [UIImage]?
-    
+    var owner_id: String
 }
 

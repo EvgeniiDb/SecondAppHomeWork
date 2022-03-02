@@ -58,7 +58,7 @@ class FriendsTableViewCell: UITableViewCell {
     func configure(user: User) {
         savedObject = user
         userLabel.text = user.name
-        userImage.image = user.avatar
+        //1 userImage.image = user.avatar
     }
     
     func configure(group: Group) {

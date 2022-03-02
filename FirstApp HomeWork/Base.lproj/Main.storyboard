@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9k3-so-aqh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -113,11 +113,24 @@
                                     <constraint firstItem="62l-7h-iaw" firstAttribute="centerY" secondItem="em8-N2-JDN" secondAttribute="centerY" id="xRu-qa-vaV"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mba-iS-8D1">
+                                <rect key="frame" x="102.5" y="599" width="209" height="31"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Войти через VK">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="bYQ-aU-cEF" kind="show" id="R0S-ge-y0T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="tintColor"/>
                         <color key="tintColor" name="AccentColor"/>
                         <constraints>
+                            <constraint firstItem="mba-iS-8D1" firstAttribute="centerX" secondItem="em8-N2-JDN" secondAttribute="centerX" id="0D7-Nb-SPh"/>
                             <constraint firstItem="aPy-6N-GRR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="0MZ-8Y-BLU">
                                 <variation key="heightClass=compact-widthClass=compact" constant="10"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="40"/>
@@ -130,6 +143,9 @@
                             <constraint firstItem="wFj-0f-XYZ" firstAttribute="top" secondItem="16O-uE-jm6" secondAttribute="bottom" constant="24" id="ABA-tK-hlf"/>
                             <constraint firstItem="DEf-32-Fm5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="AqS-Hf-Zbt"/>
                             <constraint firstItem="be9-1g-EtQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="ElZ-jF-lzR"/>
+                            <constraint firstItem="mba-iS-8D1" firstAttribute="top" secondItem="em8-N2-JDN" secondAttribute="bottom" constant="8" symbolic="YES" id="Hyg-Xv-lAj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mba-iS-8D1" secondAttribute="bottom" constant="232" id="KEA-kS-3Xi"/>
+                            <constraint firstItem="mba-iS-8D1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MfK-Rc-Itr"/>
                             <constraint firstItem="em8-N2-JDN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OtR-wV-Ue7"/>
                             <constraint firstItem="DEf-32-Fm5" firstAttribute="top" secondItem="aPy-6N-GRR" secondAttribute="bottom" constant="24" id="XGS-A2-Zhi"/>
                             <constraint firstItem="DEf-32-Fm5" firstAttribute="top" secondItem="aPy-6N-GRR" secondAttribute="bottom" constant="24" id="YHW-X6-7nh"/>
@@ -428,6 +444,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcV-4E-8tt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="807" y="68"/>
+        </scene>
+        <!--AuthVKViewController-->
+        <scene sceneID="2tI-gd-Z6F">
+            <objects>
+                <viewController id="bYQ-aU-cEF" userLabel="AuthVKViewController" customClass="AuthVKViewController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XyL-IT-IVp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uw-6q-oQK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gTb-7Y-ftk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3uw-6q-oQK" firstAttribute="leading" secondItem="gTb-7Y-ftk" secondAttribute="leading" id="3Br-NW-Zv4"/>
+                            <constraint firstItem="3uw-6q-oQK" firstAttribute="top" secondItem="gTb-7Y-ftk" secondAttribute="top" id="ImL-wX-sCo"/>
+                            <constraint firstItem="gTb-7Y-ftk" firstAttribute="trailing" secondItem="3uw-6q-oQK" secondAttribute="trailing" id="NGM-EQ-4pz"/>
+                            <constraint firstItem="gTb-7Y-ftk" firstAttribute="bottom" secondItem="3uw-6q-oQK" secondAttribute="bottom" id="yeG-0V-aXQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="92w-uv-4va"/>
+                    <connections>
+                        <outlet property="webView" destination="3uw-6q-oQK" id="8oc-zI-nby"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ji-Sy-vBf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="832"/>
         </scene>
         <!--Новости-->
         <scene sceneID="BTB-1m-0ta">

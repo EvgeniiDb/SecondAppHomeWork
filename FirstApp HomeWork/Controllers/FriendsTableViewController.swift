@@ -57,7 +57,7 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        friendsArray = dataSetingsUser.setupUser()
+       friendsArray = dataSetingsUser.setupUser()
         
         self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem
