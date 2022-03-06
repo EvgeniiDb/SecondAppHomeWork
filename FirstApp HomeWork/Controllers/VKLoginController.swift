@@ -51,6 +51,8 @@ class VKLoginController: UIViewController {
         }
     }
     
+    let segueIdentifier = "goToMain"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,7 +91,7 @@ extension VKLoginController: WKNavigationDelegate {
         UserSession.instance.userID = Int(userIdString) ?? 0
         
         performSegue(
-            withIdentifier: "goToMain",
+            withIdentifier: segueIdentifier /*"goToMain"*/,
             sender: nil)
         
         decisionHandler(.cancel)

@@ -19,9 +19,13 @@ import UIKit
 //}
 
 struct User {
-    let avatar: UIImage?
     let name: String
-    let surname: String
+    let avatar: UIImage?
+    var photoArray: [UIImage]?
+    var surname: String
     
     var fullName: String { "\(name) \(surname)" }
+    
+    
+    
 }
