@@ -408,22 +408,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfZ-lU-3Qo" customClass="WKWebView">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-SE-ifN">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4Hh-Uc-SVm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cfZ-lU-3Qo" firstAttribute="leading" secondItem="4Hh-Uc-SVm" secondAttribute="leading" id="Ebp-Dd-T7i"/>
-                            <constraint firstItem="4Hh-Uc-SVm" firstAttribute="trailing" secondItem="cfZ-lU-3Qo" secondAttribute="trailing" id="XaR-Ko-jgm"/>
-                            <constraint firstItem="4Hh-Uc-SVm" firstAttribute="bottom" secondItem="cfZ-lU-3Qo" secondAttribute="bottom" id="lER-gA-67f"/>
-                            <constraint firstItem="cfZ-lU-3Qo" firstAttribute="top" secondItem="4Hh-Uc-SVm" secondAttribute="top" id="wOV-hK-mf3"/>
+                            <constraint firstItem="ddP-SE-ifN" firstAttribute="leading" secondItem="4Hh-Uc-SVm" secondAttribute="leading" id="1ub-zU-NF7"/>
+                            <constraint firstItem="4Hh-Uc-SVm" firstAttribute="bottom" secondItem="ddP-SE-ifN" secondAttribute="bottom" id="VQ0-d5-bVJ"/>
+                            <constraint firstItem="ddP-SE-ifN" firstAttribute="top" secondItem="4Hh-Uc-SVm" secondAttribute="top" id="bqB-D8-kFt"/>
+                            <constraint firstItem="4Hh-Uc-SVm" firstAttribute="trailing" secondItem="ddP-SE-ifN" secondAttribute="trailing" id="yZr-3j-3W5"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="cfZ-lU-3Qo" id="X7m-Uf-TSu"/>
+                        <outlet property="webView" destination="ddP-SE-ifN" id="7w8-iu-NN6"/>
                         <segue destination="9k3-so-aqh" kind="show" identifier="goToMain" id="r1z-7i-kc9"/>
                     </connections>
                 </viewController>
