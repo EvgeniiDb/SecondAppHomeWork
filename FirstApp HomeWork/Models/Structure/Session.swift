@@ -7,12 +7,12 @@
 
 import Foundation
 
-class Session {
+class UserSession {
     
-    static let instance = Session()
+    static let instance = UserSession()
     
     private init() { }
     
     var token: String = ""
-    var userId: Int = 0
+    var userID: Int = 0
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9k3-so-aqh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5JC-Ul-lOJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -159,12 +159,11 @@
                         <outlet property="nameProjectLabel" destination="aPy-6N-GRR" id="6Ii-3P-2qd"/>
                         <outlet property="passwordTextField" destination="16O-uE-jm6" id="nGM-AM-BOd"/>
                         <outlet property="titleImageView" destination="gdD-AN-bup" id="A1f-ew-NOV"/>
-                        <segue destination="9k3-so-aqh" kind="presentation" identifier="reuseIdentifierToTabBar" modalPresentationStyle="fullScreen" id="JIM-ui-ZuI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.188405797101453" y="67.633928571428569"/>
+            <point key="canvasLocation" x="-632" y="876"/>
         </scene>
         <!--Мои группы-->
         <scene sceneID="GPc-wd-lq0">
@@ -401,6 +400,37 @@
             </objects>
             <point key="canvasLocation" x="4227.536231884058" y="418.52678571428572"/>
         </scene>
+        <!--Login Controller-->
+        <scene sceneID="1W1-mh-LNK">
+            <objects>
+                <viewController id="5JC-Ul-lOJ" customClass="VKLoginController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Pn-0I-jnb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfZ-lU-3Qo" customClass="WKWebView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4Hh-Uc-SVm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cfZ-lU-3Qo" firstAttribute="leading" secondItem="4Hh-Uc-SVm" secondAttribute="leading" id="Ebp-Dd-T7i"/>
+                            <constraint firstItem="4Hh-Uc-SVm" firstAttribute="trailing" secondItem="cfZ-lU-3Qo" secondAttribute="trailing" id="XaR-Ko-jgm"/>
+                            <constraint firstItem="4Hh-Uc-SVm" firstAttribute="bottom" secondItem="cfZ-lU-3Qo" secondAttribute="bottom" id="lER-gA-67f"/>
+                            <constraint firstItem="cfZ-lU-3Qo" firstAttribute="top" secondItem="4Hh-Uc-SVm" secondAttribute="top" id="wOV-hK-mf3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="cfZ-lU-3Qo" id="X7m-Uf-TSu"/>
+                        <segue destination="9k3-so-aqh" kind="show" identifier="goToMain" id="r1z-7i-kc9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O2Q-4F-VJe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-310" y="68"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oZX-wl-0Ax">
             <objects>
@@ -436,7 +466,7 @@
                     <tabBarItem key="tabBarItem" tag="8" title="Новости" image="doc.richtext.th" catalog="system" id="D63-E3-7BA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CUG-gO-okp">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -453,7 +483,7 @@
             <objects>
                 <viewController id="VAE-nn-WJY" customClass="NewsViewController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8TF-Po-pM1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ubl-Sc-gS0">

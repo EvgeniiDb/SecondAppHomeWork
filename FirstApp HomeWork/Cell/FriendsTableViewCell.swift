@@ -16,6 +16,14 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var userLabel: UILabel!
     
     var savedObject: Any?
+    
+    
+    func configure(
+        image: UIImage?,
+        name: String) {
+//        userAvatarImage.image = image
+//        userNameLabel.text = name
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

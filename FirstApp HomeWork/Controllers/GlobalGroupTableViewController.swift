@@ -20,7 +20,7 @@ class GlobalGroupTableViewController: UITableViewController {
         
         self.tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierGlobalGroupCell)
         
-        globalGroup = dataSetingsGroup.setupGroup()
+        //globalGroup = dataSetingsGroup.setupGroup()
     }
     
 
