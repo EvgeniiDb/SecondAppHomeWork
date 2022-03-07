@@ -400,15 +400,15 @@
             </objects>
             <point key="canvasLocation" x="4227.536231884058" y="418.52678571428572"/>
         </scene>
-        <!--Login Controller-->
+        <!--VK Login Controller-->
         <scene sceneID="1W1-mh-LNK">
             <objects>
-                <viewController id="5JC-Ul-lOJ" customClass="VKLoginController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5JC-Ul-lOJ" userLabel="VK Login Controller" customClass="VKLoginController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Pn-0I-jnb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-SE-ifN">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-SE-ifN" userLabel="WK Web View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -428,7 +428,7 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="ddP-SE-ifN" id="7w8-iu-NN6"/>
-                        <segue destination="9k3-so-aqh" kind="show" identifier="goToMain" id="r1z-7i-kc9"/>
+                        <segue destination="9k3-so-aqh" kind="presentation" identifier="goToMain" id="o0u-83-qMD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2Q-4F-VJe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -470,7 +470,7 @@
                     <tabBarItem key="tabBarItem" tag="8" title="Новости" image="doc.richtext.th" catalog="system" id="D63-E3-7BA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CUG-gO-okp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -487,7 +487,7 @@
             <objects>
                 <viewController id="VAE-nn-WJY" customClass="NewsViewController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8TF-Po-pM1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ubl-Sc-gS0">

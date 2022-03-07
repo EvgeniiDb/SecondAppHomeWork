@@ -8,4 +8,6 @@
 
 enum NetworkPaths: String {
     case getFriends = "friends.get"
+    case getGroups = "groups.get"
+    case getGlobalGroups = "groups.search"
 }

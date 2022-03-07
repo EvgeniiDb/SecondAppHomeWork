@@ -10,7 +10,14 @@ import WebKit
 
 class VKLoginController: UIViewController {
     
-    private var urlComponents: URLComponents = {
+    @IBOutlet var webView: WKWebView!
+    
+    
+    //let segueIdentifier = "goToMain"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "oauth.vk.com"
@@ -23,11 +30,10 @@ class VKLoginController: UIViewController {
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.130")
     ]
-        return urlComponents
-    }()
     
-    lazy var request = URLRequest(url: urlComponents.url!)
+    let request = URLRequest(url: urlComponents.url!)
 
+        webView.load(request)
 //    @IBAction func logoutSegue(for unwindSegue: UIStoryboardSegue) {
 //        UserSession.instance.token = ""
 //        UserSession.instance.userID = 0
@@ -43,21 +49,8 @@ class VKLoginController: UIViewController {
 //            }
 //        }
 //        webView.load(request)
-//    }
+//    } // это код для выхода из приложения 
     
-    @IBOutlet var webView: WKWebView! {
-        didSet {
-            webView.navigationDelegate = self
-        }
-    }
-    
-    let segueIdentifier = "goToMain"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        webView.navigationDelegate = self
-        webView.load(request)
     }
 }
 
@@ -91,11 +84,12 @@ extension VKLoginController: WKNavigationDelegate {
         UserSession.instance.userID = Int(userIdString) ?? 0
         
         performSegue(
-            withIdentifier: segueIdentifier /*"goToMain"*/,
+            withIdentifier: "goToMain",
             sender: nil)
         
         decisionHandler(.cancel)
     }
 
 }
+
 

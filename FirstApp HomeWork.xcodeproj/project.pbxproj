@@ -31,6 +31,7 @@
 		E6D984E027D4ED0E009578CD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D984DF27D4ED0E009578CD /* NetworkService.swift */; };
 		E6D984E327D4EE04009578CD /* VKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D984E227D4EE04009578CD /* VKLoginController.swift */; };
 		E6D984E527D4F161009578CD /* NetworkPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D984E427D4F161009578CD /* NetworkPaths.swift */; };
+		E6D984EA27D62F9F009578CD /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D984E927D62F9F009578CD /* UserTableViewController.swift */; };
 		E6E990DC27872C0B009787B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E990DB27872C0B009787B8 /* AppDelegate.swift */; };
 		E6E990DE27872C0B009787B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E990DD27872C0B009787B8 /* SceneDelegate.swift */; };
 		E6E990E027872C0B009787B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E990DF27872C0B009787B8 /* LoginViewController.swift */; };
@@ -65,6 +66,7 @@
 		E6D984DF27D4ED0E009578CD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E6D984E227D4EE04009578CD /* VKLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginController.swift; sourceTree = "<group>"; };
 		E6D984E427D4F161009578CD /* NetworkPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPaths.swift; sourceTree = "<group>"; };
+		E6D984E927D62F9F009578CD /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		E6E990D827872C0B009787B8 /* FirstApp HomeWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FirstApp HomeWork.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E990DB27872C0B009787B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E990DD27872C0B009787B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				E6D984E227D4EE04009578CD /* VKLoginController.swift */,
+				E6D984E927D62F9F009578CD /* UserTableViewController.swift */,
 				E6E990DF27872C0B009787B8 /* LoginViewController.swift */,
 				E64EEF1D279D4E5D0001748F /* FriendsTableViewController.swift */,
 				E657CF9E27A7112A000FF02F /* FriendsFotoCollectionViewController.swift */,
@@ -370,6 +373,7 @@
 				E64EEF28279D5DF80001748F /* GlobalGroupTableViewController.swift in Sources */,
 				E64EEF1E279D4E5D0001748F /* FriendsTableViewController.swift in Sources */,
 				E6E990DE27872C0B009787B8 /* SceneDelegate.swift in Sources */,
+				E6D984EA27D62F9F009578CD /* UserTableViewController.swift in Sources */,
 				E64EEF21279D52D00001748F /* User.swift in Sources */,
 				E6D984E327D4EE04009578CD /* VKLoginController.swift in Sources */,
 				E65C822C27AF2CB00045C217 /* NewsViewController.swift in Sources */,

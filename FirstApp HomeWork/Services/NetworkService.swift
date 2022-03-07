@@ -32,7 +32,7 @@ final class NetworkService {
     func getUserFriends() {
         var urlComponents = makeComponents(for: .getFriends)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "fields", value: "photo_200"),
+            URLQueryItem(name: "fields", value: "photo_100"),
         ])
         
         let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -47,6 +47,47 @@ final class NetworkService {
             .resume()
         }
     }
+    
+    func getUserGroup() {
+        var urlComponents = makeComponents(for: .getGroups)
+        urlComponents.queryItems?.append(contentsOf: [
+            URLQueryItem(name: "fields", value: "photo_100"),
+        ])
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        if let url = urlComponents.url {
+            session.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    print(try? JSONSerialization.jsonObject(
+                        with: data,
+                        options: .allowFragments))
+                }
+            }
+            .resume()
+        }
+    }
+    
+    func getGlobalGroup() {
+        var urlComponents = makeComponents(for: .getGlobalGroups)
+        urlComponents.queryItems?.append(contentsOf: [
+            URLQueryItem(name: "type", value: "group"),
+        ])
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        if let url = urlComponents.url {
+            session.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    print(try? JSONSerialization.jsonObject(
+                        with: data,
+                        options: .allowFragments))
+                }
+            }
+            .resume()
+        }
+    }
+    
+    
+    
 }
             
             
