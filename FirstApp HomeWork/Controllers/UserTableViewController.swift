@@ -8,7 +8,9 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
-
+    
+    
+    
     private let networkService = NetworkService()
     var friends = [
         User(
@@ -40,11 +42,11 @@ class UserTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableViewCell", for: indexPath) as? FriendsTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell
         else { return UITableViewCell() }
         let currentFriend = friends[indexPath.row]
-         
+        
+        
         cell.configure(
             image: currentFriend.avatar,
             name: currentFriend.fullName)

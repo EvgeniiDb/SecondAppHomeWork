@@ -11,49 +11,68 @@ import WebKit
 
 class VKLoginController: UIViewController {
     
-    @IBOutlet var webView: WKWebView!
+    
+    
+    private var urlComponents: URLComponents = {
+    var urlComponents = URLComponents()
+    urlComponents.scheme = "https"
+    urlComponents.host = "oauth.vk.com"
+    urlComponents.path = "/authorize"
+    urlComponents.queryItems = [
+        URLQueryItem(name: "client_id", value: "8090757"),
+        URLQueryItem(name: "display", value: "mobile"),
+        URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+        URLQueryItem(name: "scope", value: "336918"),
+        URLQueryItem(name: "response_type", value: "token"),
+        URLQueryItem(name: "v", value: "5.130")
+]
+        return urlComponents
+    }()
+    
+    lazy var request = URLRequest(url: urlComponents.url!)
+
+    
+    
+    @IBAction func logoutSegue(for unwindSegue: UIStoryboardSegue) {
+        UserSession.instance.token = ""
+        UserSession.instance.userID = 0
+
+        let dataStore = WKWebsiteDataStore.default()
+        dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { (records) in
+            for record in records {
+                if record.displayName.contains("vk") {
+                    dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: [record], completionHandler: { [weak self] in
+                        self?.webView.load(self!.request)
+                    })
+                }
+            }
+        }
+        webView.load(request)
+    } // это код для выхода из приложения
+    
+    
+    
+    @IBOutlet var webView: WKWebView! {
+        didSet {
+            webView.navigationDelegate = self
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        webView.navigationDelegate = self
+        webView.load(request)
+    }
+}
+    
+
+    
     
     
     //let segueIdentifier = "goToMain"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "oauth.vk.com"
-        urlComponents.path = "/authorize"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "8090757"),
-            URLQueryItem(name: "display", value: "mobile"),
-            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "336918"),
-            URLQueryItem(name: "response_type", value: "token"),
-            URLQueryItem(name: "v", value: "5.130")
-    ]
     
-    let request = URLRequest(url: urlComponents.url!)
-
-        webView.load(request)
-//    @IBAction func logoutSegue(for unwindSegue: UIStoryboardSegue) {
-//        UserSession.instance.token = ""
-//        UserSession.instance.userID = 0
-//
-//        let dataStore = WKWebsiteDataStore.default()
-//        dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { (records) in
-//            for record in records {
-//                if record.displayName.contains("vk") {
-//                    dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: [record], completionHandler: { [weak self] in
-//                        self?.webView.load(self!.request)
-//                    })
-//                }
-//            }
-//        }
-//        webView.load(request)
-//    } // это код для выхода из приложения 
-    
-    }
-}
 
 extension VKLoginController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {

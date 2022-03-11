@@ -66,7 +66,7 @@ import UIKit
 ////        self.tableView.delegate = self
 //        
 //        
-//        friendsTableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierUserTableCell)
+//        friendsTableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierUserTableCell)
 //    }
 //
 //    // MARK: - Table view data source.
@@ -81,7 +81,7 @@ import UIKit
 //
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierUserTableCell, for: indexPath)
-//                as? FriendsTableViewCell else { return UITableViewCell() }
+//                as? UserCell else { return UITableViewCell() }
 //        
 //        let arrayLetter = filterByAlphabet(lettersArray: sortingUserNames()[indexPath.section])
 //        cell.configure(user: arrayLetter[indexPath.row])
@@ -101,7 +101,7 @@ import UIKit
 //    // MARK: - Table view Delegate
 //    
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.cellForRow(at: indexPath) as? FriendsTableViewCell,
+//        guard let cell = tableView.cellForRow(at: indexPath) as? UserCell,
 //              let cellObject = cell.savedObject as? User else { return }
 //        performSegue(withIdentifier: segueIdentifierToFotoController, sender: cellObject)
 //    }

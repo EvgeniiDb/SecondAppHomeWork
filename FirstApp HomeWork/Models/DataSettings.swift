@@ -40,24 +40,24 @@ class DataSettings {
         return resultArray
     }
     
-    func setupGroup() -> [Group] {
-        
-        var resultArray = [Group]()
-        
-        let globalGroupOne = Group(name: "FunGroup VK", avatar: UIImage(named: "1")!, description: nil)
-        resultArray.append(globalGroupOne)
-        
-        let globalGroupTwo = Group(name: "FunGroup Holiwood", avatar: UIImage(named: "GP")!, description: nil)
-        resultArray.append(globalGroupTwo)
-        
-        let globalGroupThree = Group(name: "FunGroup Family", avatar: UIImage(named: "MyF")!, description: nil)
-        resultArray.append(globalGroupThree)
-        
-        let globalGroupFour = Group(name: "FunGroup The Doctor", avatar: UIImage(named: "VR46")!, description: nil)
-        resultArray.append(globalGroupFour)
-        
-        return resultArray
-    }
+//    func setupGroup() -> [Group] {
+//        
+//        var resultArray = [Group]()
+//        
+//        let globalGroupOne = Group(name: "FunGroup VK", avatar: UIImage(named: "1")!, description: nil)
+//        resultArray.append(globalGroupOne)
+//        
+//        let globalGroupTwo = Group(name: "FunGroup Holiwood", avatar: UIImage(named: "GP")!, description: nil)
+//        resultArray.append(globalGroupTwo)
+//        
+//        let globalGroupThree = Group(name: "FunGroup Family", avatar: UIImage(named: "MyF")!, description: nil)
+//        resultArray.append(globalGroupThree)
+//        
+//        let globalGroupFour = Group(name: "FunGroup The Doctor", avatar: UIImage(named: "VR46")!, description: nil)
+//        resultArray.append(globalGroupFour)
+//        
+//        return resultArray
+//    }
     
     func setupNews() -> [News] {
         
