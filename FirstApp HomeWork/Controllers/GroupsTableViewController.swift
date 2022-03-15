@@ -9,6 +9,8 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
+    private let networkService = NetworkService()
+    
     var groups = [Group]()
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
@@ -28,6 +30,7 @@ class GroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkService.getGlobalGroup()
     }
 
     // MARK: - Table view data source

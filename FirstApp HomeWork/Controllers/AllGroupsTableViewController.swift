@@ -9,6 +9,7 @@ import UIKit
 
 class AllGroupsTableViewController: UITableViewController {
 
+    private let networkService = NetworkService()
     let groups = [
         Group(
             avatar: UIImage(systemName: "doc.circle.fill"),
@@ -26,6 +27,7 @@ class AllGroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkService.getUserGroup()
     }
 
     // MARK: - Table view data source

@@ -9,9 +9,8 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
     
-    
-    
     private let networkService = NetworkService()
+    
     var friends = [
         User(
             name: "Friend1",
@@ -34,6 +33,7 @@ class UserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService.getUserFriends()
+        //networkService.getPhotos()
     }
 
     // MARK: - Table view data source
