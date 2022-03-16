@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class GlobalGroupTableViewController: UITableViewController {
     
     private let globalGroupSearchBar = UISearchBar()
