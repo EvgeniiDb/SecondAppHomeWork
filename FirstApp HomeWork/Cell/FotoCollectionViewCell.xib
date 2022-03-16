@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FotoCollectionViewCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="206" height="196"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="206" height="196"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfI-Jj-WpZ" userLabel="Back View">
+                        <rect key="frame" x="0.0" y="0.0" width="206" height="196"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2O-HK-RIH" userLabel="Photo Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="206" height="196"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-WW-Xvb" userLabel="Like Button">
+                                <rect key="frame" x="8" y="157" width="31" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="06i-aA-chy"/>
+                                    <constraint firstAttribute="width" constant="31" id="JkY-IH-cVn"/>
+                                    <constraint firstAttribute="width" secondItem="j3w-WW-Xvb" secondAttribute="height" multiplier="1:1" id="eXT-GL-xxr"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="likeButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="9tF-qx-QGB"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-8n-Zmj" userLabel="Like Image">
+                                <rect key="frame" x="8" y="157" width="31" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Nmf-2x-ROl"/>
+                                    <constraint firstAttribute="width" secondItem="bvX-8n-Zmj" secondAttribute="height" multiplier="1:1" id="f0i-Ee-aU1"/>
+                                    <constraint firstAttribute="width" constant="31" id="kei-OH-VuJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANR-8v-2gv" userLabel="Number Like Label">
+                                <rect key="frame" x="13.5" y="162" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="BqM-77-9Bj"/>
+                                    <constraint firstAttribute="height" constant="20" id="sHe-a1-jp7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bvX-8n-Zmj" firstAttribute="leading" secondItem="PfI-Jj-WpZ" secondAttribute="leading" constant="8" id="0nr-fN-N0P"/>
+                            <constraint firstItem="ANR-8v-2gv" firstAttribute="centerY" secondItem="PfI-Jj-WpZ" secondAttribute="centerY" constant="74" id="4qM-y8-bmh"/>
+                            <constraint firstItem="a2O-HK-RIH" firstAttribute="leading" secondItem="PfI-Jj-WpZ" secondAttribute="leading" id="PrZ-gC-DeC"/>
+                            <constraint firstAttribute="bottom" secondItem="bvX-8n-Zmj" secondAttribute="bottom" constant="8" id="SyK-Vr-qsv"/>
+                            <constraint firstItem="ANR-8v-2gv" firstAttribute="centerX" secondItem="PfI-Jj-WpZ" secondAttribute="centerX" constant="-79.5" id="Zac-tm-xOO"/>
+                            <constraint firstAttribute="bottom" secondItem="a2O-HK-RIH" secondAttribute="bottom" id="ako-ge-DvW"/>
+                            <constraint firstItem="j3w-WW-Xvb" firstAttribute="leading" secondItem="PfI-Jj-WpZ" secondAttribute="leading" constant="8" id="eBv-W7-y5b"/>
+                            <constraint firstAttribute="bottom" secondItem="j3w-WW-Xvb" secondAttribute="bottom" constant="8" id="icB-iq-HOA"/>
+                            <constraint firstAttribute="trailing" secondItem="a2O-HK-RIH" secondAttribute="trailing" id="xV5-zB-YGl"/>
+                            <constraint firstItem="a2O-HK-RIH" firstAttribute="top" secondItem="PfI-Jj-WpZ" secondAttribute="top" id="yiM-wi-dYo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="PfI-Jj-WpZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3Wi-42-N7S"/>
+                <constraint firstAttribute="bottom" secondItem="PfI-Jj-WpZ" secondAttribute="bottom" id="E7T-9S-ACN"/>
+                <constraint firstItem="PfI-Jj-WpZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YI5-6A-hYg"/>
+                <constraint firstAttribute="trailing" secondItem="PfI-Jj-WpZ" secondAttribute="trailing" id="v4t-7u-kAM"/>
+            </constraints>
+            <size key="customSize" width="206" height="196"/>
+            <connections>
+                <outlet property="backView" destination="PfI-Jj-WpZ" id="I7X-lk-qqt"/>
+                <outlet property="likeButton" destination="j3w-WW-Xvb" id="U0j-j1-fTV"/>
+                <outlet property="likeImage" destination="bvX-8n-Zmj" id="9mM-r2-aFA"/>
+                <outlet property="numberLikeLabel" destination="ANR-8v-2gv" id="g0A-VL-xw5"/>
+                <outlet property="photoImageView" destination="a2O-HK-RIH" id="a7d-2F-fWW"/>
+            </connections>
+            <point key="canvasLocation" x="231.8840579710145" y="34.821428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

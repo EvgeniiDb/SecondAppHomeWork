@@ -9,22 +9,11 @@
 import Foundation
 
 
-struct VKResponse: Codable {
-    let response: VKUser
-}
+struct VKResponse<T: Codable> : Codable {
 
-//extension VKResponse: Codable {
+    let response: T
+
     enum CodingKeys: String, CodingKey {
         case response
     }
-
-
-
-//struct VKResponse<T: Codable> : Codable {
-//
-//    let response: T
-//
-//    enum CodingKeys: String, CodingKey {
-//        case response
-//    }
-//}
+}

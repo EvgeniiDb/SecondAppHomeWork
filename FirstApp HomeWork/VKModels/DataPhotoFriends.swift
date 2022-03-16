@@ -8,29 +8,29 @@
 import Foundation
 
 
-//struct ResponsePhotoArray: Codable {
-//    
-//    let items: [ItemsPhotoArray]
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case items
-//    }
-//}
-//
-//struct ItemsPhotoArray: Codable {
-//    
-//    let id: Int
-//    let likes: PhotoLikes
-//    let ownerId: Int
-//    let photoSize: [PhotoSize]
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case likes
-//        case ownerId = "owner_id"
-//        case photoSize = "sizes"
-//    }
-//}
+struct ResponsePhotoArray: Codable {
+    
+    let items: [ItemsPhotoArray]
+    
+    enum CodingKeys: String, CodingKey {
+        case items
+    }
+}
+
+struct ItemsPhotoArray: Codable {
+    
+    let id: Int
+    let likes: PhotoLikes
+    let ownerId: Int
+    let photoSize: [PhotoSize]
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case likes
+        case ownerId = "owner_id"
+        case photoSize = "sizes"
+    }
+}
 
 struct PhotoLikes: Codable {
     

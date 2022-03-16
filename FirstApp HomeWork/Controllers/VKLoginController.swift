@@ -7,7 +7,6 @@
 
 import Foundation
 import WebKit
-//import
 
 class VKLoginController: UIViewController {
     
@@ -34,8 +33,8 @@ class VKLoginController: UIViewController {
     
     
     @IBAction func logoutSegue(for unwindSegue: UIStoryboardSegue) {
-        UserSession.instance.token = ""
-        UserSession.instance.userID = 0
+        Session.instance.token = ""
+        Session.instance.userID = 0
 
         let dataStore = WKWebsiteDataStore.default()
         dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { (records) in
@@ -100,8 +99,8 @@ extension VKLoginController: WKNavigationDelegate {
                 return
         }
         
-        UserSession.instance.token = token
-        UserSession.instance.userID = Int(userIdString) ?? 0
+        Session.instance.token = token
+        Session.instance.userID = Int(userIdString) ?? 0
         
         performSegue(
             withIdentifier: "goToMain",
