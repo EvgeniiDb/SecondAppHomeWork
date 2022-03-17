@@ -8,37 +8,37 @@
 import UIKit
 
 class DataSettings {
-    
-    func setupUser() -> [User] {
-        
-        var resultArray = [User]()
-        
-        let userOnePhotoArray = [UIImage(named: "AS")!, UIImage(named: "AS")!, UIImage(named: "AS")!, UIImage(named: "AS")!]
-        let userOne = User(name: "Iron Arny", avatar: UIImage(named: "AS")!, photoArray: userOnePhotoArray, surname: "Shwarz")
-        
-        resultArray.append(userOne)
-        
-        let userTwoPhotoArray = [UIImage(named: "DJ")!, UIImage(named: "DJ")!, UIImage(named: "DJ")!, UIImage(named: "DJ")!]
-        let userTwo = User(name: "Don Jonson", avatar: UIImage(named: "DJ")!, photoArray: userTwoPhotoArray, surname: "Marlboro")
-        
-        resultArray.append(userTwo)
-        
-        let userThreePhotoArray = [UIImage(named: "MR")!, UIImage(named: "MR")!, UIImage(named: "MR")!, UIImage(named: "MR")!]
-        let userThree = User(name: "Evgenii Di", avatar: UIImage(named: "MR")!, photoArray: userThreePhotoArray, surname: "Mikky")
-        
-        resultArray.append(userThree)
-        
-        let userFourPhotoArray = [UIImage(named: "BY")!, UIImage(named: "BY")!, UIImage(named: "BY")!, UIImage(named: "BY")!]
-        let userFour = User(name: "Bruce Toughie", avatar: UIImage(named: "BY")!, photoArray: userFourPhotoArray, surname: "Nut")
-        
-        resultArray.append(userFour)
-        
-        let sortiredNames = resultArray.sorted(by: {$0.name < $1.name})
-        
-        resultArray = sortiredNames
-        
-        return resultArray
-    }
+//
+//    func setupUser() -> [User] {
+//
+//        var resultArray = [User]()
+//
+//        let userOnePhotoArray = [UIImage(named: "AS")!, UIImage(named: "AS")!, UIImage(named: "AS")!, UIImage(named: "AS")!]
+//        let userOne = User(name: "Iron Arny", avatar: UIImage(named: "AS")!, photoArray: userOnePhotoArray, surname: "Shwarz")
+//
+//        resultArray.append(userOne)
+//
+//        let userTwoPhotoArray = [UIImage(named: "DJ")!, UIImage(named: "DJ")!, UIImage(named: "DJ")!, UIImage(named: "DJ")!]
+//        let userTwo = User(name: "Don Jonson", avatar: UIImage(named: "DJ")!, photoArray: userTwoPhotoArray, surname: "Marlboro")
+//
+//        resultArray.append(userTwo)
+//
+//        let userThreePhotoArray = [UIImage(named: "MR")!, UIImage(named: "MR")!, UIImage(named: "MR")!, UIImage(named: "MR")!]
+//        let userThree = User(name: "Evgenii Di", avatar: UIImage(named: "MR")!, photoArray: userThreePhotoArray, surname: "Mikky")
+//
+//        resultArray.append(userThree)
+//
+//        let userFourPhotoArray = [UIImage(named: "BY")!, UIImage(named: "BY")!, UIImage(named: "BY")!, UIImage(named: "BY")!]
+//        let userFour = User(name: "Bruce Toughie", avatar: UIImage(named: "BY")!, photoArray: userFourPhotoArray, surname: "Nut")
+//
+//        resultArray.append(userFour)
+//
+//        let sortiredNames = resultArray.sorted(by: {$0.name < $1.name})
+//
+//        resultArray = sortiredNames
+//
+//        return resultArray
+//    }
     
 //    func setupGroup() -> [Group] {
 //        

@@ -232,7 +232,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Все группы" id="wjk-51-8uK">
                             <color key="tintColor" systemColor="systemBlueColor"/>
                             <connections>
-                                <segue destination="s2a-bc-gNj" kind="show" identifier="" id="6qk-4e-0yE"/>
+                                <segue destination="s2a-bc-gNj" kind="show" identifier="segueIdentifierToGlobalGroupController" id="6qk-4e-0yE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

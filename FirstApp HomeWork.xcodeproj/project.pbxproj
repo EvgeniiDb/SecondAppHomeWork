@@ -127,8 +127,8 @@
 				E6D984E227D4EE04009578CD /* VKLoginController.swift */,
 				E6D984E927D62F9F009578CD /* UserTableViewController.swift */,
 				E6E990DF27872C0B009787B8 /* LoginViewController.swift */,
-				E678AE1827DBCD6900A0BCD6 /* AllGroupsTableViewController.swift */,
 				E678AE1A27DBD93100A0BCD6 /* GroupsTableViewController.swift */,
+				E678AE1827DBCD6900A0BCD6 /* AllGroupsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

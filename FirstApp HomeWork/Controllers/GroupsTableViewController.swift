@@ -7,8 +7,15 @@
 
 import UIKit
 
-class GroupsTableViewController: UITableViewController {
+class GroupsTableViewController: UITableViewController, UISearchBarDelegate {
 
+    private var groupSearchBar = UISearchBar()
+    
+    private let reuseIdentifierUserGroupCell = "UserGroupCell"
+    private let segueIdentifierToGlobalGroupController = "segueIdentifierToGlobalGroupController"
+    
+    
+    
     private let networkService = NetworkService()
     
     var groups = [Group]()
@@ -27,7 +34,6 @@ class GroupsTableViewController: UITableViewController {
    
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         networkService.getGlobalGroup()
