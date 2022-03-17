@@ -8,7 +8,7 @@
 import UIKit
 
 class DataSettings {
-//
+
 //    func setupUser() -> [User] {
 //
 //        var resultArray = [User]()
