@@ -9,6 +9,7 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
+    
     private let networkService = NetworkService()
     
     var groups = [Group]()

@@ -9,6 +9,7 @@ import UIKit
 
 class FriendPhotoCell: UICollectionViewCell {
     
+    
     @IBOutlet weak var friendPhotoImageView: UIImageView!
     
     func configure(image: UIImage) {

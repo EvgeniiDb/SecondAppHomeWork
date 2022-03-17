@@ -69,7 +69,7 @@ final class NetworkService {
         }
     }
 
-    //есть сомнения в правильности кода (поиск по группам)
+    
     func getGlobalGroup() {
         var urlComponents = makeComponents(for: .getGlobalGroups)
         urlComponents.queryItems?.append(contentsOf: [
@@ -89,7 +89,7 @@ final class NetworkService {
         }
     }
 
-    //есть сомнения в правильности кода
+    
     func getUserPhoto() {
         var urlComponents = makeComponents(for: .getPhotos)
         urlComponents.queryItems?.append(contentsOf: [
