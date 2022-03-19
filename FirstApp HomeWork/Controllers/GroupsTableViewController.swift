@@ -31,7 +31,7 @@ class GroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkService.getGlobalGroup()
+        networkService.getUserGroup()
     }
 
     // MARK: - Table view data source

@@ -10,14 +10,22 @@ import Foundation
 
 
 struct VKResponse: Codable {
-    let response: VKUser
+    let response: VKResponseObject
+    
 }
+
 
 //extension VKResponse: Codable {
     enum CodingKeys: String, CodingKey {
         case response
     }
 
+
+
+struct VKResponseObject: Codable {
+    let count: Int?
+    let items: [VKUser]?
+}
 
 
 //struct VKResponse<T: Codable> : Codable {

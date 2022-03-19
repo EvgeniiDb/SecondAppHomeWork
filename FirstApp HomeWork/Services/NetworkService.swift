@@ -12,7 +12,7 @@ import Alamofire
 
 final class NetworkService {
 
-    private let apiVersion = "5.130"
+    private let apiVersion = "5.131"
 
     private func makeComponents(for path: NetworkPaths) -> URLComponents {
         let urlComponent: URLComponents = {
@@ -29,7 +29,7 @@ final class NetworkService {
         return urlComponent
     }
 
-    func getUserFriends() {
+    func getUserFriends(сompletion: @escaping  (([VKUser]) -> Void)) {
         var urlComponents = makeComponents(for: .getFriends)
         urlComponents.queryItems?.append(contentsOf: [
             URLQueryItem(name: "fields", value: "photo_200"),
@@ -39,11 +39,12 @@ final class NetworkService {
         if let url = urlComponents.url {
             session.dataTask(with: url) { (data, response, error) in
                 if let data = data {
-                    print(try? JSONSerialization.jsonObject(
-                        with: data,
-                        options: .allowFragments))
-//                    let vkResponse = try? JSONDecoder().decode(VKResponse.self, from: data)
-//                    print(vkResponse) //через Decoder (Respons)
+//                    print(try? JSONSerialization.jsonObject(
+//                        with: data,
+//                        options: .allowFragments))
+                    let vkResponse = try? JSONDecoder().decode(VKResponse.self, from: data)
+                    print(vkResponse) //через Decoder (Respons)
+                    сompletion(vkResponse?.response.items ?? [])
                 }
             }
             .resume()
@@ -51,15 +52,17 @@ final class NetworkService {
     }
 
     func getUserGroup() {
-        var urlComponents = makeComponents(for: .getGroups)
+        var urlComponents = makeComponents(for: .getGroupsForUser)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "fields", value: "photo_200"),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "count", value: "2")
         ])
 
         let session = URLSession(configuration: URLSessionConfiguration.default)
         if let url = urlComponents.url {
             session.dataTask(with: url) { (data, response, error) in
                 if let data = data {
+                    
                     print(try? JSONSerialization.jsonObject(
                         with: data,
                         options: .allowFragments))
@@ -70,10 +73,10 @@ final class NetworkService {
     }
 
     
-    func getGlobalGroup() {
-        var urlComponents = makeComponents(for: .getGlobalGroups)
+    func getGlobalGroupSearch(searchText:String) {
+        var urlComponents = makeComponents(for: .getGlobalGroupsSearch)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "type", value: "group"),
+            URLQueryItem(name: "q", value: searchText),
         ])
 
         let session = URLSession(configuration: URLSessionConfiguration.default)

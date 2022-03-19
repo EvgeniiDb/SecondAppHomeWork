@@ -8,7 +8,7 @@
 import RealmSwift
 
 class RealmGroup: Object {
-    //@objc dynamic var id: Int = 0
+    @objc dynamic var id: Int = 0
     @objc dynamic var firstName: String = ""
     @objc dynamic var userAvatarURL: String = ""
 }

@@ -13,5 +13,5 @@ class RealmPhoto: Object {
     @objc dynamic var likesCount: Int = 0
     @objc dynamic var ownerId: Int = 0
     @objc dynamic var userLikeStatus: Int = 0
-    @objc dynamic var photoUrlString: String = ""
+    @objc dynamic var photoUrlString: String =  ""
 }

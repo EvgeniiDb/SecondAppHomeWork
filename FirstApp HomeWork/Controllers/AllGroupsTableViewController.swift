@@ -27,7 +27,7 @@ class AllGroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkService.getUserGroup()
+        networkService.getGlobalGroupSearch(searchText: "Moto")
     }
 
     // MARK: - Table view data source

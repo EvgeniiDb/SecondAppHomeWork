@@ -11,29 +11,18 @@ class UserTableViewController: UITableViewController {
     
     private let networkService = NetworkService()
     
-    var friends = [
-        User(
-            name: "Friend1",
-            avatar: UIImage(systemName: "person.circle.fill"),
-            surname: "Surname1"),
-        User(
-            name: "Friend2",
-            avatar: UIImage(systemName: "person.circle.fill"),
-            surname: "Surname2"),
-        User(
-            name: "Friend3",
-            avatar: UIImage(systemName: "person.circle.fill"),
-            surname: "Surname3"),
-        User(
-            name: "Friend4",
-            avatar: UIImage(systemName: "person.circle.fill"),
-            surname: "Surname4"),
-    ]
+    var friends: [VKUser] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkService.getUserFriends()
-        //networkService.getPhotos()
+        networkService.getUserFriends { users in
+            self.friends = users
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -48,8 +37,8 @@ class UserTableViewController: UITableViewController {
         
         
         cell.configure(
-            image: currentFriend.avatar,
-            name: currentFriend.fullName)
+            image: currentFriend.userAvatarURL,
+            name: currentFriend.firstName)
 
         return cell
     }
