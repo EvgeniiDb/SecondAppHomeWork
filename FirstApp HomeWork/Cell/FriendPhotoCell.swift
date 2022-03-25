@@ -12,10 +12,7 @@ class FriendPhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var friendPhotoImageView: UIImageView!
     
-    func configure(image: UIImage) {
-        friendPhotoImageView.image = image
+    func configure(imageURL: String) {
+        friendPhotoImageView.kf.setImage(with: URL(string: imageURL))
     }
-    
-    
-    
 }

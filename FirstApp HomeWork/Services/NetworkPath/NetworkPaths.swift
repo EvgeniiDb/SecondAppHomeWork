@@ -8,7 +8,8 @@
 
 enum NetworkPaths: String {
     case getFriends = "friends.get"
-    case getGroupsForUser = "groups.get"
-    case getGlobalGroupsSearch = "groups.search"
-    case getPhotos = "photos.getAll"
+    case getAllPhotos = "photos.getAll"
+    case getGroups = "groups.get"
+    
+    //case getGlobalGroupsSearch = "groups.search"
 }

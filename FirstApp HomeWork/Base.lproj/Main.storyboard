@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5JC-Ul-lOJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -173,14 +174,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="KRJ-Eg-Eh5">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="UserGroupCell" rowHeight="58" id="k9a-5X-LDI" userLabel="GroupCell" customClass="GroupCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88.5" width="414" height="58"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k9a-5X-LDI" id="aPl-fr-58a" customClass="GroupCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
@@ -420,9 +416,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <color key="sectionIndexBackgroundColor" systemColor="systemYellowColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="KRJ-Eg-Eh5">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="58" id="gKb-oo-3E3" userLabel="GroupCell" customClass="GroupCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="58"/>
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gKb-oo-3E3" id="Rtd-ae-hfJ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
@@ -511,10 +512,6 @@
                     <navigationItem key="navigationItem" id="3yQ-gW-Ghj">
                         <barButtonItem key="backBarButtonItem" title="назад" id="czp-bg-gj8"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="backView" destination="PEB-YI-22t" id="vPQ-Kz-5mm"/>
-                        <outlet property="galleryView" destination="3XM-4N-ETb" id="BGp-7N-Ro3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70w-Fr-Ce6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

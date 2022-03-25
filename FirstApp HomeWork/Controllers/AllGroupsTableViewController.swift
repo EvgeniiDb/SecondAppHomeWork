@@ -10,26 +10,24 @@ import UIKit
 class AllGroupsTableViewController: UITableViewController {
 
     private let networkService = NetworkService()
-    let groups = [
-        Group(
-            avatar: UIImage(systemName: "doc.circle.fill"),
-            name: "Group00"),
-        Group(
-            avatar: UIImage(systemName: "doc.circle.fill"),
-            name: "Group01"),
-        Group(
-            avatar: UIImage(systemName: "doc.circle.fill"),
-            name: "Group02"),
-        Group(
-            avatar: UIImage(systemName: "doc.circle.fill"),
-            name: "Group03"),
-    ]
+    var groups = [VKGroup]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkService.getGlobalGroupSearch(searchText: "Moto")
+        networkService.getUserGroups { [weak self] vkGroups in
+            guard
+                let self = self,
+                let groups = vkGroups
+            else { return }
+            self.groups = groups
+        }
+        
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
@@ -42,7 +40,7 @@ class AllGroupsTableViewController: UITableViewController {
         
         let currentGroup = groups[indexPath.row]
         cell.configure(
-            image: currentGroup.avatar,
+            imageURL: currentGroup.avatarURL,
             name: currentGroup.name)
         
         return cell
@@ -51,6 +49,5 @@ class AllGroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
-    
+
 }

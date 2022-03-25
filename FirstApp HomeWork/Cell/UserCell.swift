@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserCell: UITableViewCell {
 
@@ -13,9 +14,9 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     
     func configure(
-        image: String?,
-        name: String?) {
-//        userAvatarImage.image = image
+        imageURL: String,
+        name: String) {
+        userAvatarImage.kf.setImage(with: URL(string: imageURL))
         userNameLabel.text = name
     }
 }

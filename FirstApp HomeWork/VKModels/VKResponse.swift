@@ -6,33 +6,27 @@
 //
 
 
-import Foundation
-
-
-struct VKResponse: Codable {
-    let response: VKResponseObject
-    
+struct VKResponse<T: Codable> : Codable {
+    let response: T
 }
 
 
-//extension VKResponse: Codable {
-    enum CodingKeys: String, CodingKey {
-        case response
-    }
 
-
-
-struct VKResponseObject: Codable {
-    let count: Int?
-    let items: [VKUser]?
-}
-
-
-//struct VKResponse<T: Codable> : Codable {
+//struct VKResponse: Codable {
+//    let response: VKResponseObject
 //
-//    let response: T
+//}
 //
+//
+////extension VKResponse: Codable {
 //    enum CodingKeys: String, CodingKey {
 //        case response
 //    }
+//
+//
+//
+//struct VKResponseObject: Codable {
+//    let count: Int?
+//    let items: [VKUser]?
+//    let itemsGroup: [ItemsGroup]?
 //}

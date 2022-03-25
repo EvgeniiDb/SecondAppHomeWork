@@ -6,9 +6,9 @@
 //
 import Foundation
 
-struct VKFriends: Codable {
+struct VKItems<T:Codable>: Codable {
     let count: Int
-    let items: [VKUser] //uncomment for codable
+    let items: [T]
 }
 
 

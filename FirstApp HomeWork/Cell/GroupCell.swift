@@ -8,16 +8,15 @@
 import UIKit
 
 class GroupCell: UITableViewCell {
-
    
         @IBOutlet weak var groupImageView: UIImageView!
         @IBOutlet weak var groupNameLabel: UILabel!
 
         
         func configure(
-            image: UIImage?,
+            imageURL: String,
             name: String) {
-            groupImageView.image = image
+            groupImageView.kf.setImage(with: URL(string: imageURL))
             groupNameLabel.text = name
         }
 
