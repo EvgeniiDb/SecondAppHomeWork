@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="2615.9420289855075" y="-267.1875"/>
         </scene>
-        <!--Friends Foto Collection View Controller-->
+        <!--User Photos Collection Controller-->
         <scene sceneID="0a8-IT-Fyc">
             <objects>
-                <collectionViewController id="EAO-Oy-bMy" userLabel="Friends Foto Collection View Controller" customClass="UserPhotosCollectionController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="EAO-Oy-bMy" userLabel="User Photos Collection Controller" customClass="UserPhotosCollectionController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" id="5AR-8E-CWT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" reuseIdentifier="FotoCell" id="e6R-9R-Pdq" userLabel="Friend Photo Cell" customClass="FriendPhotoCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" reuseIdentifier="FriendPhotoCell" id="e6R-9R-Pdq" userLabel="FriendPhotoCell" customClass="FriendPhotoCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="167" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xZp-8r-3zs" customClass="FriendPhotoCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
@@ -324,7 +324,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="71" id="CA8-rj-2tG" userLabel="FriendsTableViewCell" customClass="UserCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="71" id="CA8-rj-2tG" customClass="UserCell" customModule="FirstApp_HomeWork" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CA8-rj-2tG" id="aT0-0E-DJ5">
@@ -360,7 +360,7 @@
                                 <connections>
                                     <outlet property="userAvatarImage" destination="Nqw-cn-YIB" id="gTc-6L-jbl"/>
                                     <outlet property="userNameLabel" destination="IJH-HY-YQG" id="wUu-eF-fZd"/>
-                                    <segue destination="EAO-Oy-bMy" kind="show" identifier="segueIdentifierToFotoController" id="odG-EJ-d2b"/>
+                                    <segue destination="EAO-Oy-bMy" kind="show" identifier="" id="yT0-Jk-QmH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

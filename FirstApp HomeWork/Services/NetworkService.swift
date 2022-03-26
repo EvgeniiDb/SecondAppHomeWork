@@ -29,6 +29,35 @@ final class NetworkService {
         return urlComponent
     }
 
+    func getUserPhotos(
+        userID: Int,
+        completion: @escaping ([VKPhoto]?) -> Void) {
+        var urlComponets = makeComponents(for: .getAllPhotos)
+        urlComponets.queryItems?.append(contentsOf: [
+            URLQueryItem(name: "owner_id", value: "\(userID)"),
+            URLQueryItem(name: "album_id", value: "profile"),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "photo_sizes", value: "1"),
+        ])
+        
+        if let url = urlComponets.url {
+            AF
+                .request(url)
+                .responseData { response in
+                    switch response.result {
+                    case .success(let data):
+                        let json = JSON(data)
+                        let photoJSONs = json["response"]["items"].arrayValue
+                        let vkUserPhoto = photoJSONs.map { VKPhoto($0) }
+                        completion(vkUserPhoto)
+                    case .failure(let error):
+                        print(error)
+                        completion(nil)
+                    }
+                }
+        }
+    }
+    
     func getUserFriends(completion: @escaping ([RealmUser]?) -> Void) {
         var urlComponents = makeComponents(for: .getFriends)
         urlComponents.queryItems?.append(contentsOf: [
@@ -100,34 +129,7 @@ final class NetworkService {
 //    }
 
     
-    func getUserPhotos(
-        userID: Int,
-        completion: @escaping ([VKPhoto]?) -> Void) {
-        var urlComponets = makeComponents(for: .getAllPhotos)
-        urlComponets.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "owner_id", value: "\(userID)"),
-            URLQueryItem(name: "album_id", value: "profile"),
-            URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "photo_sizes", value: "1"),
-        ])
-        
-        if let url = urlComponets.url {
-            AF
-                .request(url)
-                .responseData { response in
-                    switch response.result {
-                    case .success(let data):
-                        let json = JSON(data)
-                        let photoJSONs = json["response"]["items"].arrayValue
-                        let vkUserPhoto = photoJSONs.map { VKPhoto($0) }
-                        completion(vkUserPhoto)
-                    case .failure(let error):
-                        print(error)
-                        completion(nil)
-                    }
-                }
-        }
-    }
+
 }
         
         

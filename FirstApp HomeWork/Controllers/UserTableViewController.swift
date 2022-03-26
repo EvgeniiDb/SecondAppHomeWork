@@ -50,13 +50,13 @@ class UsersTableViewController: UITableViewController {
     private func modify() {
         let someUser = try? RealmService
             .load(typeOf: RealmUser.self)
-            .filter(NSPredicate(format: "id == %i", 1578889))
+            .filter(NSPredicate(format: "id == %i", 1281161))
         print(someUser)
         if let currentUser = someUser?.first {
             do {
                 let realm = try Realm()
                 try realm.write {
-                    currentUser.firstName = "Филипп"
+                    currentUser.firstName = "Паша"
                 }
             } catch {
                 print(error)
