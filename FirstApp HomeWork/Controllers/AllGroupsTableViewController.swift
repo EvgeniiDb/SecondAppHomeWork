@@ -6,16 +6,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AllGroupsTableViewController: UITableViewController {
 
     private let networkService = NetworkService()
 
-    var groups = [VKGroup]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private let groups = try? RealmService.load(typeOf: RealmGroup.self)
+    private var token: NotificationToken?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +23,14 @@ class AllGroupsTableViewController: UITableViewController {
                 let self = self,
                 let groups = vkGroups
             else { return }
-            self.groups = groups
+            //self.groups = groups
         }
 
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return groups?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,10 +38,10 @@ class AllGroupsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as? GroupCell
         else { return UITableViewCell() }
 
-        let currentGroup = groups[indexPath.row]
+        let currentGroup = groups?[indexPath.row]
         cell.configure(
-            imageURL: currentGroup.avatarURL,
-            name: currentGroup.name)
+            imageURL: currentGroup!.userAvatarURL,
+            name: currentGroup!.firstName)
 
         return cell
     }

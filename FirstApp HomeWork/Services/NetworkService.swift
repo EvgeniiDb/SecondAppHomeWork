@@ -84,10 +84,10 @@ final class NetworkService {
         }
     }
 
-    func getUserGroups(completion: @escaping ([VKGroup]?) -> Void) {
+    func getUserGroups(completion: @escaping ([RealmUser]?) -> Void) {
         var urlComponents = makeComponents(for: .getGroups)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "userAvatarURL", value: "photo_200"),
         ])
         
         if let url = urlComponents.url {
@@ -99,7 +99,6 @@ final class NetworkService {
                         let json = JSON(data)
                         let usersJSONs = json["response"]["items"].arrayValue
                         let vkUsers = usersJSONs.map { VKGroup($0) }
-                        completion(vkUsers)
                     case .failure(let error):
                         print(error)
                         completion(nil)
