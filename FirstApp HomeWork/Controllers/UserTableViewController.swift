@@ -10,18 +10,12 @@ import RealmSwift
 
 class UsersTableViewController: UITableViewController {
     private let networkService = NetworkService()
-    
-//    let realmResultUser: Results<RealmUser>? = try? RealmService.load(typeOf: RealmUser.self)
-//    var friends = [RealmUser]() {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
-    
-    let users = try? RealmService.load(typeOf: RealmUser.self)
+    private let users = try? RealmService.load(typeOf: RealmUser.self)
+    private var token: NotificationToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        observeRealm()
         //print(users) //смотреть в Realm Studio через Breakpoint
         networkService.getUserFriends { [weak self] vkFriends in
             guard
@@ -38,6 +32,11 @@ class UsersTableViewController: UITableViewController {
         modify()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        token?.invalidate()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             let dest = segue.destination as? UserPhotosCollectionController,
@@ -45,6 +44,22 @@ class UsersTableViewController: UITableViewController {
             dest.userID = users?[index].id
             print(users?[index])
         }
+    }
+    
+    private func observeRealm() {
+        token = users?.observe({ changes in
+            switch changes {
+            case .initial(let results):
+                if results.count > 0 {
+                    self.tableView.reloadData()
+                }
+                //print(results)
+            case let .update(results, deletions, insertions, modifications):
+                print(results, deletions, insertions, modifications)
+            case .error(let error):
+                print(error)
+            }
+        })
     }
     
     private func modify() {
