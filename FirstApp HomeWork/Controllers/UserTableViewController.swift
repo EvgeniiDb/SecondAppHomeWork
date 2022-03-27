@@ -22,7 +22,7 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //print(users) //смотреть в Realm Studio через Breakpoint
         networkService.getUserFriends { [weak self] vkFriends in
             guard
                 let self = self,
