@@ -15,6 +15,7 @@
 		E64EEF26279D5D600001748F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64EEF25279D5D600001748F /* Group.swift */; };
 		E64EEF28279D5DF80001748F /* GlobalGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64EEF27279D5DF80001748F /* GlobalGroupTableViewController.swift */; };
 		E64EEF2C279D67E50001748F /* UserGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64EEF2B279D67E50001748F /* UserGroupTableViewController.swift */; };
+		E64F1C2427FA41A70016FAF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E64F1C2327FA41A70016FAF7 /* GoogleService-Info.plist */; };
 		E657CF9C27A70681000FF02F /* FotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E657CF9A27A70681000FF02F /* FotoCollectionViewCell.swift */; };
 		E657CF9F27A7112A000FF02F /* FriendsFotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E657CF9E27A7112A000FF02F /* FriendsFotoCollectionViewController.swift */; };
 		E65C822627AF0ABA0045C217 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65C822527AF0ABA0045C217 /* News.swift */; };
@@ -65,6 +66,7 @@
 		E64EEF25279D5D600001748F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E64EEF27279D5DF80001748F /* GlobalGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalGroupTableViewController.swift; sourceTree = "<group>"; };
 		E64EEF2B279D67E50001748F /* UserGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupTableViewController.swift; sourceTree = "<group>"; };
+		E64F1C2327FA41A70016FAF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E657CF9A27A70681000FF02F /* FotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		E657CF9E27A7112A000FF02F /* FriendsFotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E65C822527AF0ABA0045C217 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				E6E990E627872C0C009787B8 /* LaunchScreen.storyboard */,
 				E678AE1527DBC74500A0BCD6 /* Old files */,
 				E6E990E927872C0C009787B8 /* Info.plist */,
+				E64F1C2327FA41A70016FAF7 /* GoogleService-Info.plist */,
 				E64A2F2227C39155008BC2D4 /* Core Data1.xcdatamodeld */,
 			);
 			path = "FirstApp HomeWork";
@@ -369,6 +372,7 @@
 				E6E990E527872C0C009787B8 /* Assets.xcassets in Resources */,
 				E6E990E327872C0B009787B8 /* Main.storyboard in Resources */,
 				E65C822A27AF0BC10045C217 /* NewsCollectionViewCell.xib in Resources */,
+				E64F1C2427FA41A70016FAF7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +541,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -592,7 +596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
