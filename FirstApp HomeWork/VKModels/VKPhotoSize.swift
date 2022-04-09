@@ -14,6 +14,13 @@ struct VKPhotoSize {
     let type: String
 }
 
+extension VKPhotoSize: Codable {
+    enum CodingKeys: String, CodingKey {
+        case url, width, height, type
+    }
+}
+
+
 extension VKPhotoSize {
     init(_ json: JSON) {
         self.url = json["url"].stringValue

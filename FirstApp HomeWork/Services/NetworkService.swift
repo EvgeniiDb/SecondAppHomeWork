@@ -108,6 +108,37 @@ final class NetworkService {
     }
 
     
+    func getUserNews(completion: @escaping ([RealmNews]?) -> Void) {
+        var urlComponents = makeComponents(for: .getNews)
+        urlComponents.queryItems?.append(contentsOf: [
+            URLQueryItem(name: "fields", value: "photo_200"),
+        ])
+        
+        if let url = urlComponents.url {
+            AF
+                .request(url)
+                .responseData { response in
+                    switch response.result {
+                    case .success(let data):
+                        let json = JSON(data)
+                        let newsJSONs = json["response"]["items"].arrayValue
+                        let vkNews = newsJSONs.map { RealmNews($0) }
+                        DispatchQueue.main.async {
+                            completion(vkNews)
+                        }
+                    case .failure(let error):
+                        print(error)
+                        completion(nil)
+                    }
+                }
+        }
+    }
+    
+    
+    
+    
+    
+    
 //    func getGlobalGroupSearch(searchText:String) {
 //        var urlComponents = makeComponents(for: .getGlobalGroupsSearch)
 //        urlComponents.queryItems?.append(contentsOf: [

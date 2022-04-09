@@ -5,6 +5,7 @@
 //  Created by Евгений Доброволец on 19.03.2022.
 //
 
+import SwiftyJSON
 import RealmSwift
 
 class RealmPhoto: Object {
@@ -14,4 +15,25 @@ class RealmPhoto: Object {
     @objc dynamic var ownerId: Int = 0
     @objc dynamic var userLikeStatus: Int = 0
     @objc dynamic var photoUrlString: String =  ""
+
+
+    override class func primaryKey() -> String? {
+        "friendId"
+    }
+    
+    override class func indexedProperties() -> [String] {
+        ["firstName", "userAvatarURL"]
+    }
+}
+
+extension RealmPhoto {
+    convenience init(_ json: JSON) {
+        self.init()
+        self.friendId = json["friendId"].intValue
+        self.likesCount = json["likesCount"].intValue
+        self.ownerId = json["ownerId"].intValue
+        self.userLikeStatus = json["userLikeStatus"].intValue
+        self.photoUrlString = json["photoUrlString"].stringValue
+        
+    }
 }
