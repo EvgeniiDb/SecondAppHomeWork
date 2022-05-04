@@ -12,5 +12,5 @@ enum NetworkPaths: String {
     case getGroups = "groups.get"
     case getNews = "newsfeed.get"
     
-    //case getGlobalGroupsSearch = "groups.search"
+    case getGlobalGroupsSearch = "groups.search"
 }
