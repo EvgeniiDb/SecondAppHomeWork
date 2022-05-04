@@ -13,6 +13,7 @@ class RealmNews: Object {
     @objc dynamic var text: String = ""
     @objc dynamic var postID: Int = 0
     @objc dynamic var type: String = ""
+    @objc dynamic var author: Int = 0
 
     override class func primaryKey() -> String? {
         "sourceID"
@@ -30,6 +31,7 @@ extension RealmNews {
         self.text = json["text"].stringValue
         self.postID = json["postID"].intValue
         self.type = json["type"].stringValue
+        self.author = json["author"].intValue
     }
     
 }
