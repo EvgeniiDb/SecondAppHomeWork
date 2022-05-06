@@ -7,17 +7,27 @@
 
 import UIKit
 
-class TextNewsTableViewCell: UITableViewCell {
+final class TextNewsTableViewCell: UITableViewCell {
 
+    //@IBOutlet weak var backView: UIView!
+    @IBOutlet weak var newsTextLabel: UILabel!
+    
+    private func clearCell() {
+        newsTextLabel.text = nil
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        clearCell()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        clearCell()
+    }
+    
+    func configure(textNews: RealmNews) {
+        newsTextLabel.text = textNews.text
     }
 
 }
