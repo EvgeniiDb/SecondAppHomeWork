@@ -9,7 +9,7 @@ import Foundation
 
 struct VKNews {
     let sourceID: Int
-    //let date: Double
+//    let date: Double
     let text: String
 //    let attachments: [VKNewsAttachments]
 //    let comments: VKComments

@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 
 final class NetworkService {
@@ -84,7 +85,7 @@ final class NetworkService {
         }
     }
 
-    func getUserGroups(completion: @escaping ([RealmUser]?) -> Void) {
+    func getUserGroups(completion: @escaping ([RealmGroup]?) -> Void) {
         var urlComponents = makeComponents(for: .getGroups)
         urlComponents.queryItems?.append(contentsOf: [
             URLQueryItem(name: "userAvatarURL", value: "photo_200"),
@@ -97,8 +98,8 @@ final class NetworkService {
                     switch response.result {
                     case .success(let data):
                         let json = JSON(data)
-                        let usersJSONs = json["response"]["items"].arrayValue
-                        let vkUsers = usersJSONs.map { VKGroup($0) }
+                        let groupsJSONs = json["response"]["items"].arrayValue
+                        let vkGroups = groupsJSONs.map { RealmGroup($0) }
                     case .failure(let error):
                         print(error)
                         completion(nil)
@@ -111,7 +112,15 @@ final class NetworkService {
     func getUserNews(completion: @escaping ([RealmNews]?) -> Void) {
         var urlComponents = makeComponents(for: .getNews)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "fields", value: "photo_200"),
+            //URLQueryItem(name: "users", value: "wall"),
+            //URLQueryItem(name: "user_id", value: Session.instance.userIdString),
+            URLQueryItem(name: "filters", value: "post"),
+//            URLQueryItem(name: "return_banned", value: "0"),
+//            URLQueryItem(name: "max_photos", value: "1"),
+//            URLQueryItem(name: "source_ids", value: "groups"),
+//            URLQueryItem(name: "count", value: "5"),
+//            URLQueryItem(name: "access_token", value: Session.instance.token),
+//            URLQueryItem(name: "v", value: "5.131"),
         ])
         
         if let url = urlComponents.url {

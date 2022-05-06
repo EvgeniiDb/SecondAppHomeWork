@@ -23,6 +23,7 @@ extension VKPhotoSize: Codable {
 
 extension VKPhotoSize {
     init(_ json: JSON) {
+        let sourceID = json["source_id"].intValue
         self.url = json["url"].stringValue
         self.width = json["width"].intValue
         self.height = json["height"].intValue

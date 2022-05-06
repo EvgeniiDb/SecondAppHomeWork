@@ -11,7 +11,7 @@ import RealmSwift
 class GroupsTableViewController: UITableViewController {
 
     private let networkService = NetworkService()
-    private let groups = try? RealmService.load(typeOf: RealmGroup.self)
+    private var groups = try? RealmService.load(typeOf: RealmGroup.self)
     private var token: NotificationToken?
     
     
@@ -33,27 +33,17 @@ class GroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         observeRealm()
-        //print(users) //смотреть в Realm Studio через Breakpoint
-        networkService.getUserGroups { [weak self] VKGroup in
+        //print(groups) //смотреть в Realm Studio через Breakpoint
+        networkService.getUserGroups { [weak self] VKGroups in
             guard
                 let self = self,
-                let group = VKGroup
+                let group = VKGroups
             else { return }
             try? RealmService.save(items: group)
-//            self.friends = friends
+
         }
     }
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        networkService.getUserGroups { [weak self] VKGroups in
-//            guard
-//                let self = self,
-//                let groups = VKGroups
-//            else { return }
-//            self.groups = groups
-//        }
-//    }
+
 
     private func observeRealm() {
         token = groups?.observe({ changes in
