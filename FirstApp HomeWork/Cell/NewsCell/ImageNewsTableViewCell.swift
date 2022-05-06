@@ -7,17 +7,23 @@
 
 import UIKit
 
-class ImageNewsTableViewCell: UITableViewCell {
+final class ImageNewsTableViewCell: UITableViewCell {
 
+    //@IBOutlet weak var backVew: UIView!
+    @IBOutlet weak var newsImage: UIImageView!
+    
+    private func clearCell() {
+        newsImage.image = nil
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        clearCell()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        clearCell()
     }
 
 }

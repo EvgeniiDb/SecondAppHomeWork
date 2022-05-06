@@ -112,7 +112,15 @@ final class NetworkService {
     func getUserNews(completion: @escaping ([RealmNews]?) -> Void) {
         var urlComponents = makeComponents(for: .getNews)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "users", value: "wall"),
+            //URLQueryItem(name: "users", value: "wall"),
+            //URLQueryItem(name: "user_id", value: Session.instance.userIdString),
+            URLQueryItem(name: "filters", value: "post"),
+//            URLQueryItem(name: "return_banned", value: "0"),
+//            URLQueryItem(name: "max_photos", value: "1"),
+//            URLQueryItem(name: "source_ids", value: "groups"),
+//            URLQueryItem(name: "count", value: "5"),
+//            URLQueryItem(name: "access_token", value: Session.instance.token),
+//            URLQueryItem(name: "v", value: "5.131"),
         ])
         
         if let url = urlComponents.url {

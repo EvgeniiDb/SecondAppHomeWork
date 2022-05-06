@@ -40,12 +40,12 @@ final class NewsViewController: UIViewController {
             self.networking.getUserNews { [weak self] news, user, group in
                 guard let self = self else { return }
                 let realmNews = news.map { RealmNews(itemsNews: $0) }
-                let realmFriends = user.map { RealmUsers(itemsUser: $0) }
-                let realmGroups = group.map { RealmGroups(itemsGroup: $0) }
+                let realmUser = user.map { RealmUser(itemsUser: $0) }
+                let realmGroup = group.map { RealmGroup(itemsGroup: $0) }
                 DispatchQueue.main.async {
                     self.newsArray = realmNews
-                    self.newsAuthorFriendsArray = realmUsers
-                    self.newsAuthorGroupsArray = realmGroups
+                    self.newsAuthorFriendsArray = realmUser
+                    self.newsAuthorGroupsArray = realmGroup
                     self.newsTableView.reloadData()
                     print(self.newsArray.count, self.newsAuthorGroupsArray.count, self.newsAuthorUsersArray.count)
                 }
@@ -80,7 +80,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
             else { return UITableViewCell() }
             
             if newsArray[indexPath.section].author > 0 {
-                cell.configure(authorFriend: newsAuthorFriendsArray[indexPath.section], news: newsArray[indexPath.section])
+                cell.configure(authorUser: newsAuthorFriendsArray[indexPath.section], news: newsArray[indexPath.section])
             } else if newsArray[indexPath.section].author < 0 {
                 cell.configure(authorGroup: newsAuthorGroupsArray[indexPath.section], news: newsArray[indexPath.section])
             } else {
@@ -103,13 +103,13 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
             
             return cell
             
-        case .infoNews:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as? InfoPanelTableViewCell
-            else { return UITableViewCell() }
-            
-            cell.configure(news: newsArray[indexPath.section])
-            
-            return cell
+//        case .infoNews:
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as? InfoPanelTableViewCell
+//            else { return UITableViewCell() }
+//
+//            cell.configure(news: newsArray[indexPath.section])
+//
+//            return cell
           
         default:
             fatalError()

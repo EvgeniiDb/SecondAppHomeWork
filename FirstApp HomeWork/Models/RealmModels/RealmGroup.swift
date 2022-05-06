@@ -19,6 +19,9 @@ class RealmGroup: Object {
     override class func indexedProperties() -> [String] {
         ["firstName", "userAvatarURL"]
     }
+    var avatar: UIImage? {
+        return nil //!!!??????????
+    }
 }
 
 extension RealmGroup {

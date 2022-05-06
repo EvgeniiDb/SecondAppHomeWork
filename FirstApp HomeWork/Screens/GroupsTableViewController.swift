@@ -43,18 +43,7 @@ class GroupsTableViewController: UITableViewController {
 
         }
     }
-//    //AllGroupsTableViewController
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        networkService.getUserGroups { [weak self] VKGroups in
-//            guard
-//                let self = self,
-//                let groups = VKGroups
-//            else { return }
-////            self.groups = groups
-//        }
-//    }
+
 
     private func observeRealm() {
         token = groups?.observe({ changes in
