@@ -8,11 +8,45 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 
 final class NetworkService {
 
     private let apiVersion = "5.131"
+    private let dispGroup = DispatchGroup()
+    
+    private let opq: OperationQueue = {
+        let operationQ = OperationQueue()
+        operationQ.qualityOfService = .userInteractive
+        
+        return operationQ
+    }()
+    
+//    private let myNewOperation = BlockOperation {
+//        print("Some text")
+//    }
+//
+//    private func makeComponents(for path: NetworkPaths, complition: @escaping (URLComponents) -> Void) {
+//        myNewOperation.cancel()
+//        opq.addOperation {
+//            let urlComponent: URLComponents = {
+//                var url = URLComponents()
+//                url.scheme = "https"
+//                url.host = "api.vk.com"
+//                url.path = "/method/\(path.rawValue)"
+//                url.queryItems = [
+//                    URLQueryItem(name: "access_token", value: UserSession.instance.token),
+//                    URLQueryItem(name: "v", value: self.apiVersion),
+//                ]
+//                return url
+//            }()
+//            complition(urlComponent)
+//        }
+//    }
+    
+    
+    
 
     private func makeComponents(for path: NetworkPaths) -> URLComponents {
         let urlComponent: URLComponents = {
@@ -22,7 +56,7 @@ final class NetworkService {
             url.path = "/method/\(path.rawValue)"
             url.queryItems = [
                 URLQueryItem(name: "access_token", value: UserSession.instance.token),
-                URLQueryItem(name: "v", value: apiVersion),
+                URLQueryItem(name: "v", value: self.apiVersion),
             ]
             return url
         }()
@@ -32,15 +66,15 @@ final class NetworkService {
     func getUserPhotos(
         userID: Int,
         completion: @escaping ([VKPhoto]?) -> Void) {
-        var urlComponets = makeComponents(for: .getAllPhotos)
-        urlComponets.queryItems?.append(contentsOf: [
+            var urlComponents = makeComponents(for: .getAllPhotos)
+        urlComponents.queryItems?.append(contentsOf: [
             URLQueryItem(name: "owner_id", value: "\(userID)"),
             URLQueryItem(name: "album_id", value: "profile"),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "photo_sizes", value: "1"),
         ])
         
-        if let url = urlComponets.url {
+        if let url = urlComponents.url {
             AF
                 .request(url)
                 .responseData { response in
@@ -84,7 +118,7 @@ final class NetworkService {
         }
     }
 
-    func getUserGroups(completion: @escaping ([RealmUser]?) -> Void) {
+    func getUserGroups(completion: @escaping ([RealmGroup]?) -> Void) {
         var urlComponents = makeComponents(for: .getGroups)
         urlComponents.queryItems?.append(contentsOf: [
             URLQueryItem(name: "userAvatarURL", value: "photo_200"),
@@ -97,8 +131,8 @@ final class NetworkService {
                     switch response.result {
                     case .success(let data):
                         let json = JSON(data)
-                        let usersJSONs = json["response"]["items"].arrayValue
-                        let vkUsers = usersJSONs.map { VKGroup($0) }
+                        let groupsJSONs = json["response"]["items"].arrayValue
+                        let vkGroups = groupsJSONs.map { RealmGroup($0) }
                     case .failure(let error):
                         print(error)
                         completion(nil)
@@ -111,7 +145,15 @@ final class NetworkService {
     func getUserNews(completion: @escaping ([RealmNews]?) -> Void) {
         var urlComponents = makeComponents(for: .getNews)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "fields", value: "photo_200"),
+            URLQueryItem(name: "users", value: "wall"),
+            //URLQueryItem(name: "user_id", value: Session.instance.userIdString),
+            URLQueryItem(name: "filters", value: "post"),
+//            URLQueryItem(name: "return_banned", value: "0"),
+//            URLQueryItem(name: "max_photos", value: "1"),
+            URLQueryItem(name: "source_ids", value: "groups"),
+//            URLQueryItem(name: "count", value: "5"),
+//            URLQueryItem(name: "access_token", value: Session.instance.token),
+//            URLQueryItem(name: "v", value: "5.131"),
         ])
         
         if let url = urlComponents.url {
