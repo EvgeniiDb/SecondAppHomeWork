@@ -24,7 +24,7 @@ extension VKNews {
     init(_ json: JSON) {
         let sourceID = json["source_id"].intValue
         //let date
-//        let text = json["text"].stringValue
+        let text = json["text"].stringValue
 //        let attachments = json["VKNewsAttachments"].stringValue
 //        let comments = json["VKComments"].stringValue
 //        let likes
