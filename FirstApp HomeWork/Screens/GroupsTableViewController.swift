@@ -70,13 +70,14 @@ class GroupsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as? GroupCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as? GroupCell,
+            let currentGroup = groups?[indexPath.row]
         else { return UITableViewCell() }
         
-        let currentGroup = groups?[indexPath.row]
+        
         cell.configure(
-            imageURL: currentGroup!.userAvatarURL,
-            name: currentGroup!.firstName)
+            imageURL: currentGroup.userAvatarURL,
+            name: currentGroup.firstName)
         
         return cell
     }
