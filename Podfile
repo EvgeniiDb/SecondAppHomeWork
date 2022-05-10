@@ -12,5 +12,6 @@ pod 'RealmSwift'
 pod 'SwiftyJSON'
 pod 'Kingfisher'
 pod 'KeychainSwift'
+pod 'PromiseKit'
 
 end

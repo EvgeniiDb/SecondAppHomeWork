@@ -27,6 +27,9 @@ class RealmUser: Object {
     override class func indexedProperties() -> [String] {
         ["firstName", "lastName"]
     }
+    var avatar: UIImage? {
+        return nil //!!!??????????
+    }
 }
 
 extension RealmUser {
