@@ -46,6 +46,7 @@
 		E6CCB96327E533E80035768A /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CCB96227E533E80035768A /* RealmUser.swift */; };
 		E6CCB96527E5346A0035768A /* RealmGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CCB96427E5346A0035768A /* RealmGroup.swift */; };
 		E6CCB96727E5356D0035768A /* RealmPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CCB96627E5356D0035768A /* RealmPhoto.swift */; };
+		E6D051EB2829277400200507 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D051EA2829277400200507 /* NewsViewController.swift */; };
 		E6D31FA227DFA6F300673A1D /* VKItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D31FA127DFA6F300673A1D /* VKItems.swift */; };
 		E6D31FA427DFB0C000673A1D /* VKResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D31FA327DFB0C000673A1D /* VKResponse.swift */; };
 		E6D31FA827E08ECA00673A1D /* VKGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D31FA727E08ECA00673A1D /* VKGroups.swift */; };
@@ -103,6 +104,7 @@
 		E6CCB96227E533E80035768A /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		E6CCB96427E5346A0035768A /* RealmGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmGroup.swift; sourceTree = "<group>"; };
 		E6CCB96627E5356D0035768A /* RealmPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPhoto.swift; sourceTree = "<group>"; };
+		E6D051EA2829277400200507 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E6D31FA127DFA6F300673A1D /* VKItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKItems.swift; sourceTree = "<group>"; };
 		E6D31FA327DFB0C000673A1D /* VKResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKResponse.swift; sourceTree = "<group>"; };
 		E6D31FA727E08ECA00673A1D /* VKGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroups.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				E6C6AC5C27EDD95E00ABFDDD /* UserPhotosCollectionController.swift */,
 				E678AE1A27DBD93100A0BCD6 /* GroupsTableViewController.swift */,
 				E678AE1827DBCD6900A0BCD6 /* AllGroupsTableViewController.swift */,
+				E6D051EA2829277400200507 /* NewsViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				E6D31FA227DFA6F300673A1D /* VKItems.swift in Sources */,
 				E6CCB96527E5346A0035768A /* RealmGroup.swift in Sources */,
 				E64EEF28279D5DF80001748F /* GlobalGroupTableViewController.swift in Sources */,
+				E6D051EB2829277400200507 /* NewsViewController.swift in Sources */,
 				E6CCB96727E5356D0035768A /* RealmPhoto.swift in Sources */,
 				E64EEF1E279D4E5D0001748F /* FriendsTableViewController.swift in Sources */,
 				E6E990DE27872C0B009787B8 /* SceneDelegate.swift in Sources */,
@@ -672,6 +676,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -704,6 +709,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
