@@ -7,24 +7,51 @@
 
 import UIKit
 import RealmSwift
+import PromiseKit
 
 class UsersTableViewController: UITableViewController {
     private let networkService = NetworkService()
     private let users = try? RealmService.load(typeOf: RealmUser.self)
+    private var someUsers: Results<RealmUser>?
     private var token: NotificationToken?
+    private var userToken: NotificationToken?
+    private let photoService: PhotoService = {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        return appDelegate?.photoService ?? PhotoService()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        observeRealm()
+        
+
+
+        
+//        observeRealm()
+//        modify()
+//        networkService.getUserFriendsPromise()
+//            .thenMap(on: .global()) { json in
+//                return Promise.value(RealmUser(json))
+//            }
+//            .done { realmUsers in
+//                do {
+//                    try RealmService.save(items: realmUsers)
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//            .catch { error in
+//                print(error)
+//            }
+                
         //print(users) //смотреть в Realm Studio через Breakpoint
-        networkService.getUserFriends { [weak self] vkFriends in
-            guard
-                let self = self,
-                let friends = vkFriends
-            else { return }
-            try? RealmService.save(items: friends)
+//        networkService.getUserFriends { [weak self] vkFriends in
+//            guard
+//                let self = self,
+//                let friends = vkFriends
+//            else { return }
+//            try? RealmService.save(items: friends)
 //            self.friends = friends
-        }
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,7 +119,8 @@ class UsersTableViewController: UITableViewController {
         
         cell.configure(
             imageURL: currentFriend.userAvatarURL,
-            name: currentFriend.fullName)
+            name: currentFriend.fullName,
+        photoService: photoService)
 
         return cell
     }
