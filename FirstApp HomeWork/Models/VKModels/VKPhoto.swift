@@ -16,10 +16,15 @@ struct VKPhoto {
 
 extension VKPhoto {
     init(_ json: JSON) {
-        self.id = json["id"].intValue
-        self.albumID = json["album_id"].intValue
-        self.ownerID = json["owner_id"].intValue
+        let id = json["id"].intValue
+        let albumID = json["album_id"].intValue
+        let ownerID = json["owner_id"].intValue
         let sizeJSONs = json["sizes"].arrayValue
-        self.sizes = sizeJSONs.map { VKPhotoSize($0) }
+        let sizes = sizeJSONs.map { VKPhotoSize($0) }
+    
+        self.init(id: id, albumID: albumID,
+                  ownerID: ownerID,
+                  //sizeJSONs: size,
+                  sizes: sizes)
     }
 }
