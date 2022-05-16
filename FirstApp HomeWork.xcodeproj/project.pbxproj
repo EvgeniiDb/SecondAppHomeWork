@@ -24,6 +24,7 @@
 		E65C822927AF0BC10045C217 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65C822727AF0BC10045C217 /* NewsCollectionViewCell.swift */; };
 		E65C822A27AF0BC10045C217 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E65C822827AF0BC10045C217 /* NewsCollectionViewCell.xib */; };
 		E65C822C27AF2CB00045C217 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65C822B27AF2CB00045C217 /* NewsViewController.swift */; };
+		E65ED9152831B6980006A8EB /* News2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65ED9142831B6980006A8EB /* News2ViewController.swift */; };
 		E660EA3227B98843004054F8 /* GalleryPhotoCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E660EA3127B98843004054F8 /* GalleryPhotoCustomView.swift */; };
 		E660EA3427B98850004054F8 /* GalleryPhotoCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E660EA3327B98850004054F8 /* GalleryPhotoCustomView.xib */; };
 		E660EA3627B98ACA004054F8 /* GalleryPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E660EA3527B98ACA004054F8 /* GalleryPhotoViewController.swift */; };
@@ -82,6 +83,7 @@
 		E65C822727AF0BC10045C217 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E65C822827AF0BC10045C217 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		E65C822B27AF2CB00045C217 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		E65ED9142831B6980006A8EB /* News2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News2ViewController.swift; sourceTree = "<group>"; };
 		E660EA3127B98843004054F8 /* GalleryPhotoCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCustomView.swift; sourceTree = "<group>"; };
 		E660EA3327B98850004054F8 /* GalleryPhotoCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryPhotoCustomView.xib; sourceTree = "<group>"; };
 		E660EA3527B98ACA004054F8 /* GalleryPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPhotoViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				E6C6AC5C27EDD95E00ABFDDD /* UserPhotosCollectionController.swift */,
 				E678AE1A27DBD93100A0BCD6 /* GroupsTableViewController.swift */,
 				E678AE1827DBCD6900A0BCD6 /* AllGroupsTableViewController.swift */,
+				E65ED9142831B6980006A8EB /* News2ViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				E678099D282312790008A471 /* AuthorNewsTableViewCell.swift in Sources */,
 				E6E990E027872C0B009787B8 /* LoginViewController.swift in Sources */,
 				E65C822927AF0BC10045C217 /* NewsCollectionViewCell.swift in Sources */,
+				E65ED9152831B6980006A8EB /* News2ViewController.swift in Sources */,
 				E660EA3627B98ACA004054F8 /* GalleryPhotoViewController.swift in Sources */,
 				E65C822627AF0ABA0045C217 /* News.swift in Sources */,
 				E6D984E027D4ED0E009578CD /* NetworkService.swift in Sources */,
@@ -593,7 +597,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -648,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

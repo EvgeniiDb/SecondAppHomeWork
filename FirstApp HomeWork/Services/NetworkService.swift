@@ -196,24 +196,24 @@ final class NetworkService {
     
     
     
-//    func getGlobalGroupSearch(searchText:String) {
-//        var urlComponents = makeComponents(for: .getGlobalGroupsSearch)
-//        urlComponents.queryItems?.append(contentsOf: [
-//            URLQueryItem(name: "q", value: searchText),
-//        ])
-//
-//        let session = URLSession(configuration: URLSessionConfiguration.default)
-//        if let url = urlComponents.url {
-//            session.dataTask(with: url) { (data, response, error) in
-//                if let data = data {
-//                    print(try? JSONSerialization.jsonObject(
-//                        with: data,
-//                        options: .allowFragments))
-//                }
-//            }
-//            .resume()
-//        }
-//    }
+    func getGlobalGroupSearch(searchText:String) {
+        var urlComponents = makeComponents(for: .getGlobalGroupsSearch)
+        urlComponents.queryItems?.append(contentsOf: [
+            URLQueryItem(name: "q", value: searchText),
+        ])
+
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        if let url = urlComponents.url {
+            session.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    print(try? JSONSerialization.jsonObject(
+                        with: data,
+                        options: .allowFragments))
+                }
+            }
+            .resume()
+        }
+    }
 
     
 

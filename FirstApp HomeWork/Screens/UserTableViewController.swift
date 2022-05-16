@@ -23,35 +23,12 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
+        getUsers()
+        observeRealm()
         
-//        observeRealm()
-//        modify()
-//        networkService.getUserFriendsPromise()
-//            .thenMap(on: .global()) { json in
-//                return Promise.value(RealmUser(json))
-//            }
-//            .done { realmUsers in
-//                do {
-//                    try RealmService.save(items: realmUsers)
-//                } catch {
-//                    print(error)
-//                }
-//            }
-//            .catch { error in
-//                print(error)
-//            }
-                
-        //print(users) //смотреть в Realm Studio через Breakpoint
-//        networkService.getUserFriends { [weak self] vkFriends in
-//            guard
-//                let self = self,
-//                let friends = vkFriends
-//            else { return }
-//            try? RealmService.save(items: friends)
-//            self.friends = friends
-//        }
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +39,25 @@ class UsersTableViewController: UITableViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         token?.invalidate()
+    }
+    
+    @objc
+    private func refresh() {
+        getUsers()
+        
+    }
+    
+    private func getUsers() {
+        networkService.getUserFriends { [weak self] realmUsers in
+            self?.tableView.refreshControl?.endRefreshing()
+            guard let realmUsers = realmUsers else { return }
+            do {
+                try RealmService.save(items: realmUsers)
+            } catch {
+                print(error.localizedDescription)
+            }
+
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,7 +78,9 @@ class UsersTableViewController: UITableViewController {
                 }
                 //print(results)
             case let .update(results, deletions, insertions, modifications):
-                print(results, deletions, insertions, modifications)
+                //break
+                //print(results, deletions, insertions, modifications)
+                self.tableView.reloadData()
             case .error(let error):
                 print(error)
             }

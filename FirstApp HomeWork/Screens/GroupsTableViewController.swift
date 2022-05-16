@@ -40,6 +40,7 @@ class GroupsTableViewController: UITableViewController {
                 let group = VKGroups
             else { return }
             try? RealmService.save(items: group)
+            //self.group = group
 
         }
     }

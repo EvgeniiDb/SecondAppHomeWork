@@ -11,13 +11,13 @@ import RealmSwift
 class AllGroupsTableViewController: UITableViewController {
 
     private let networkService = NetworkService()
-
     private let groups = try? RealmService.load(typeOf: RealmGroup.self)
     private var token: NotificationToken?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        observeRealm()
         networkService.getUserGroups { [weak self] vkGroups in
             guard
                 let self = self,
@@ -27,6 +27,25 @@ class AllGroupsTableViewController: UITableViewController {
         }
 
     }
+    
+    
+    private func observeRealm() {
+        token = groups?.observe({ changes in
+            switch changes {
+            case .initial(let results):
+                if results.count > 0 {
+                    self.tableView.reloadData()
+                }
+                //print(results)
+            case let .update(results, deletions, insertions, modifications):
+                print(results, deletions, insertions, modifications)
+            case .error(let error):
+                print(error)
+            }
+        })
+    }
+    
+    
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,13 +54,14 @@ class AllGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as? GroupCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as? GroupCell,
+            let currentGroup = groups?[indexPath.row]
         else { return UITableViewCell() }
 
-        let currentGroup = groups?[indexPath.row]
+        
         cell.configure(
-            imageURL: currentGroup!.userAvatarURL,
-            name: currentGroup!.firstName)
+            imageURL: currentGroup.userAvatarURL,
+            name: currentGroup.firstName)
 
         return cell
     }

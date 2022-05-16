@@ -22,9 +22,9 @@ class RealmNews: Object {
     override class func indexedProperties() -> [String] {
         ["text", "type"]
     }
-//    var avatar: UIImage? {
-//        return nil //!!!??????????
-//    }
+    var avatar: UIImage? {
+        return nil //!!!??????????
+    }
 }
 
 extension RealmNews {

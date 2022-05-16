@@ -602,7 +602,7 @@
         <!--Новости-->
         <scene sceneID="rys-kl-qhd">
             <objects>
-                <viewController id="VAE-nn-WJY" customClass="NewsViewController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VAE-nn-WJY" customClass="News2ViewController" customModule="FirstApp_HomeWork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8TF-Po-pM1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
