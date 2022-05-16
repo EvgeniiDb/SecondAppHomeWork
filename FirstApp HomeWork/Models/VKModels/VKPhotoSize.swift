@@ -6,12 +6,14 @@
 //
 
 import SwiftyJSON
+import CoreGraphics
 
 struct VKPhotoSize {
     let url: String
     let width: Int
     let height: Int
     let type: String
+    var aspectRatio: CGFloat { CGFloat(width) / CGFloat(height) } //для автомат получения размеров картинки (если не мозаика, а одно фото)
 }
 
 extension VKPhotoSize: Codable {

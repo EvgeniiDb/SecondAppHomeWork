@@ -20,6 +20,8 @@ class UsersTableViewController: UITableViewController {
         return appDelegate?.photoService ?? PhotoService()
     }()
 
+    let vkNews = [VKPhotoSize]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -121,6 +123,17 @@ class UsersTableViewController: UITableViewController {
         photoService: photoService)
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {     //данный метод экономит время на загрузку таблицы
+        case 2:
+            let tableWidth = tableView.bounds.width
+            let newsAspect = vkNews[indexPath.row].aspectRatio
+            return tableWidth * newsAspect
+        default:
+            return UITableView.automaticDimension
+        }
     }
 
 }
