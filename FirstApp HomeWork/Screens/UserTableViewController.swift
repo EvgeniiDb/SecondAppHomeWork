@@ -20,14 +20,16 @@ class UsersTableViewController: UITableViewController {
         return appDelegate?.photoService ?? PhotoService()
     }()
 
+    private var isLoading = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getUsers()
         observeRealm()
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    
+        makeRefreshControl()
+        configPrefetch()
         
     }
     
@@ -41,6 +43,15 @@ class UsersTableViewController: UITableViewController {
         token?.invalidate()
     }
     
+    private func configPrefetch() {
+        tableView.prefetchDataSource = self
+    }
+    
+    private func makeRefreshControl() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
     @objc
     private func refresh() {
         getUsers()
@@ -48,6 +59,7 @@ class UsersTableViewController: UITableViewController {
     }
     
     private func getUsers() {
+//        startFrom: Date().timeIntervalSince1970 + 1 //для новостей
         networkService.getUserFriends { [weak self] realmUsers in
             self?.tableView.refreshControl?.endRefreshing()
             guard let realmUsers = realmUsers else { return }
@@ -123,4 +135,48 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
 
+}
+
+
+extension UsersTableViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard
+            let maxRow = indexPaths
+                .map({ $0.row }) //если на секциях сделано то section делаем
+                .max(),
+            let users = self.users
+        else { return }
+        if
+            maxRow > users.count - 4,
+            !isLoading {
+            isLoading = true
+            //start_from // как входной параметр
+            networkService.getUserFriends/*(startFrom: self.startFrom)*/ { [weak self ] users in
+                guard
+                    let self = self,
+                    let selfUsers = self.users,
+                let users = users
+                else { return }
+                let indexSet = IndexSet(integersIn: selfUsers.count ..< selfUsers.count + users.count)
+                //let count = ((selfUsers.count + users.count) - selfUsers.count)
+//                var indexPaths = [IndexPath]()
+//                for index in 0...count {
+//                    indexPaths.append(IndexPath(
+//                                        row: maxRow + 3 + index,
+//                                        section: 0))
+//                }
+//                var usersArray = [RealmUser]()
+                //usersArray.append(contentsOf: users) //здесь будет newsArray
+                self.tableView.insertSections( //для обновления секций
+                    indexSet,
+                    with: .automatic)
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: indexPaths, with: .automatic) //в нашем случае обновляем ячейку
+                self.tableView.endUpdates()
+                self.isLoading = false
+            }
+        }
+    }
+    
+    
 }
