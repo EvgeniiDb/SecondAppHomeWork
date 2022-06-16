@@ -20,7 +20,7 @@ class UsersTableViewController: UITableViewController {
         return appDelegate?.photoService ?? PhotoService()
     }()
     
-    let vkNews = [VKPhotoSize]()
+    //let vkNews = [VKPhotoSize]()
     
     private var isLoading = false
     
