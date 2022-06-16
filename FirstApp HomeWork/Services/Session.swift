@@ -12,16 +12,12 @@ final class UserSession {
     var token = ""
     var userID = 0
     
+    var userIdString: String {
+        return String(userID)
+    }
+    
+    
     private init() { }
 }
 
 
-//class UserSession {
-//
-//    static let instance = UserSession()
-//
-//    private init() { }
-//
-//    var token: String = ""
-//    var userID: Int = 0
-//}
