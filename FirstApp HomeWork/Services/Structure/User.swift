@@ -7,15 +7,6 @@
 import Foundation
 import UIKit
 
-//struct User {
-//    
-//    var name: String
-//    let surname: String?
-//    var avatar: UIImage?
-//    var photoArray: [UIImage]?
-// 
-//    //var fullName: String { "\(name) \(surname)" }
-//}
 
 struct User {
     let name: String

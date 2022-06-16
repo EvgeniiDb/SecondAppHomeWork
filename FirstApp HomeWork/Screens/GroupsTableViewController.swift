@@ -15,13 +15,13 @@ class GroupsTableViewController: UITableViewController {
     private var token: NotificationToken?
     
     
-    
 //    @IBAction func addGroup(segue: UIStoryboardSegue) {
 //        guard
 //            segue.identifier == "addGroup",
 //            let allGroupsController = segue.source as? AllGroupsTableViewController,
 //            let indexPath = allGroupsController.tableView.indexPathForSelectedRow
 //        else { return }
+//        
 //        let group = allGroupsController.groups[indexPath.row]
 //        if !groups.contains(group) {
 //            groups.append(group)

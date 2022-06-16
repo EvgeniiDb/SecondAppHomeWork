@@ -9,7 +9,7 @@ import Foundation
 
 struct VKNews {
     let sourceID: Int
-//    let date: Double
+    let date: Double
     let text: String
 //    let attachments: [VKNewsAttachments]
 //    let comments: VKComments
@@ -23,7 +23,7 @@ struct VKNews {
 extension VKNews {
     init(_ json: JSON) {
         let sourceID = json["source_id"].intValue
-        //let date
+        let date = json["date"].doubleValue
         let text = json["text"].stringValue
 //        let attachments = json["VKNewsAttachments"].stringValue
 //        let comments = json["VKComments"].stringValue
@@ -34,6 +34,7 @@ extension VKNews {
         let type = json["type"].stringValue
         
         self.init(sourceID: sourceID,
+                  date: date,
                   text: "",
                   postID: postID,
                   type: type)

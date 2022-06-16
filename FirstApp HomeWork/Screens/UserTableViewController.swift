@@ -19,18 +19,18 @@ class UsersTableViewController: UITableViewController {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         return appDelegate?.photoService ?? PhotoService()
     }()
-
+    
     let vkNews = [VKPhotoSize]()
+    
+    private var isLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getUsers()
         observeRealm()
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        
+        makeRefreshControl()
+        configPrefetch()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +43,18 @@ class UsersTableViewController: UITableViewController {
         token?.invalidate()
     }
     
+    private func configPrefetch() {
+        tableView.prefetchDataSource = self
+    }
+    
+    private func makeRefreshControl() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(
+            self,
+            action: #selector(refresh),
+            for: .valueChanged)
+    }
+    
     @objc
     private func refresh() {
         getUsers()
@@ -50,6 +62,7 @@ class UsersTableViewController: UITableViewController {
     }
     
     private func getUsers() {
+        //startFrom: Date().timeIntervalSince1970 + 1
         networkService.getUserFriends { [weak self] realmUsers in
             self?.tableView.refreshControl?.endRefreshing()
             guard let realmUsers = realmUsers else { return }
@@ -58,7 +71,6 @@ class UsersTableViewController: UITableViewController {
             } catch {
                 print(error.localizedDescription)
             }
-
         }
     }
     
@@ -78,11 +90,45 @@ class UsersTableViewController: UITableViewController {
                 if results.count > 0 {
                     self.tableView.reloadData()
                 }
-                //print(results)
+                
             case let .update(results, deletions, insertions, modifications):
-                //break
-                //print(results, deletions, insertions, modifications)
+//                break
                 self.tableView.reloadData()
+//                self.tableView.reloadRows(at: <#T##[IndexPath]#>, with: <#T##UITableView.RowAnimation#>)
+//                self.tableView.insertRows(at: <#T##[IndexPath]#>, with: <#T##UITableView.RowAnimation#>)
+            case .error(let error):
+                print(error)
+            }
+        })
+    }
+    
+    private func observeUser() {
+        guard let someUser = try? RealmService
+                .load(typeOf: RealmUser.self)
+                .filter(NSPredicate(format: "id == %i", 221995))
+                .first
+        else {
+            return }
+        userToken = someUser.observe({ changes in
+            switch changes {
+            case let .change(object, property):
+                guard
+                    let users = self.users,
+                    let index = users
+                        .enumerated()
+                        .first(where: { $0.element.id == 221995 })?
+                        .offset,
+                    let visibleRows = self.tableView.indexPathsForVisibleRows
+                else {
+                    return self.tableView.reloadData()
+                }
+                let indexPath = IndexPath(row: index, section: 0)
+                if visibleRows.contains(indexPath) {
+                    self.tableView.reloadRows(at: [indexPath], with: .left)
+                }
+
+            case .deleted:
+                print("User try to escape")
             case .error(let error):
                 print(error)
             }
@@ -125,15 +171,58 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {     //данный метод экономит время на загрузку таблицы
-        case 2:
-            let tableWidth = tableView.bounds.width
-            let newsAspect = vkNews[indexPath.row].aspectRatio
-            return tableWidth * newsAspect
-        default:
-            return UITableView.automaticDimension
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        switch indexPath.row {     //данный метод экономит время на загрузку таблицы
+//        case 2:
+//            let tableWidth = tableView.bounds.width
+//            let newsAspect = vkNews[indexPath.row].aspectRatio //error что-то с потоком связано Thread-1
+//            return tableWidth * newsAspect
+//        default:
+//            return UITableView.automaticDimension
+//        }
+//    }
+
+    
+}
+
+extension UsersTableViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard
+            let maxRow = indexPaths
+                .map({ $0.row })
+                .max(),
+            let users = self.users
+        else { return }
+        if
+            maxRow > users.count - 4,
+           !isLoading {
+            isLoading = true
+            // start_from как входной параметр
+            networkService.getUserFriends /*(startFrom: self.startFrom)*/ { [weak self] users in
+                guard
+                    let self = self,
+                    let selfUsers = self.users,
+                    let users = users
+                else { return }
+                let indexSet = IndexSet(integersIn: selfUsers.count ..< selfUsers.count + users.count)
+//                let count = ((selfUsers.count + users.count) - selfUsers.count)
+//                var indexPaths = [IndexPath]()
+//                for index in 0..<count {
+//                    indexPaths.append(IndexPath(
+//                                        row: maxRow + 3 + index,
+//                                        section: 0))
+//                }
+//                var usersArray = [RealmUser]()
+//                usersArray.append(contentsOf: users)
+                self.tableView.insertSections(
+                    indexSet,
+                    with: .automatic)
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: indexPaths, with: .automatic)
+                self.tableView.endUpdates()
+                self.isLoading = false
+                
+            }
         }
     }
-
 }

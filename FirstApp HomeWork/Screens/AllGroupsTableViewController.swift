@@ -11,7 +11,7 @@ import RealmSwift
 class AllGroupsTableViewController: UITableViewController {
 
     private let networkService = NetworkService()
-    private let groups = try? RealmService.load(typeOf: RealmGroup.self)
+    private var groups = try? RealmService.load(typeOf: RealmGroup.self)
     private var token: NotificationToken?
     
 

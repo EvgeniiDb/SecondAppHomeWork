@@ -716,7 +716,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Новости" id="TSf-Yj-npf"/>
                     <connections>
-                        <outlet property="newsTableView" destination="EQg-5Q-GTj" id="kCo-qR-Lwv"/>
+                        <outlet property="newsTableView" destination="EQg-5Q-GTj" id="Csu-Wr-czY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ1-53-w1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
