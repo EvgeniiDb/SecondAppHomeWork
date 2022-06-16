@@ -182,6 +182,5 @@ extension News2ViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableView.automaticDimension
         }
     }
-    
 }
 
