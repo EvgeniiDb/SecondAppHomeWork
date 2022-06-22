@@ -12,7 +12,8 @@ import RealmSwift
 import PromiseKit
 
 
-class NetworkService {
+class NetworkService: APIAdapter {
+    
 
     private let apiVersion = "5.131"
 
@@ -30,9 +31,49 @@ class NetworkService {
         }()
         return urlComponent
     }
+    
+    
+    
+    func joinGroup(groupID: Int, completion: @escaping (Bool) -> Void) {
+        if let realm = try? Realm(configuration: RealmService.config) {
+            guard let group = realm.objects(Group.self)
+                .filter("id == %@", groupID).first
+            else { return }
+            realmNotificationTokens[.group]?.invalidate()
+            let token = realm.objects(Group.self).observe { [weak self] changes in
+                switch changes {
+                case .initial:
+                    break
+                case .update(_, let deleted, _, _):
+                    completion(!deleted.isEmpty)
+                case .error(let error):
+                    fatalError("\(error)")
+                }
+            }
+            NotificationToken[.group] = token
+            AppSettings
+                .instance
+                .queuedService
+                .joinGroup(group: group)
+        }
+    }
+    
+    func getImage(url: String, completion: @escaping (UIImage?) -> Void) {
+        AppSettings.instance.photoService.getImage(urlString: url, completion: {
+            [weak self] image in
+            completion(image)
+        })
+    }
+    
+    func loadImage(placeholderImage: UIImage?, toImageView: UIImageView?, url: String, onFailureImage: UIImage?) {
+        AppSettings.instance.photoService.loadImage(placeholderImage: placeholderImage,
+                                                    toImageView: toImageView,
+                                                    url: url,
+                                                    onFailureImage: onFailureImage)
+    }
 
     func getUserPhotos(
-        userID: Int,
+        UserID userID: Int,
         completion: @escaping ([VKPhoto]?) -> Void) {
         var urlComponets = makeComponents(for: .getAllPhotos)
         urlComponets.queryItems?.append(contentsOf: [
@@ -76,23 +117,6 @@ class NetworkService {
                         case .success(let data):
                             let json = JSON(data)
                             seal.fulfill(json["response"]["items"].arrayValue)
-//                            let dispGroup = DispatchGroup()
-//                            var vkUsers = [RealmUser]()
-//                            DispatchQueue.global().async(group: dispGroup) {
-//                                let json = JSON(data)
-//                                let usersJSONs = json["response"]["items"].arrayValue
-//                                vkUsers = usersJSONs.map { RealmUser($0) }
-//                            }
-//                            DispatchQueue.global().async() {
-//                                let json = JSON(data)
-//                                let usersJSONs = json["response"]["items"].arrayValue
-//                                DispatchQueue.global().async() {
-//                                    vkUsers = usersJSONs.map { RealmUser($0) }
-//                                }
-//                            }
-//                            dispGroup.notify(queue: .main) {
-//                                seal.fulfill(vkUsers)
-//                            }
                         case .failure(let error):
                             seal.reject(error)
                         }
@@ -100,10 +124,6 @@ class NetworkService {
             }
         }
     }
-    
-    
-    
-    
     
     
     func getUserFriends(completion: @escaping ([RealmUser]?) -> Void) {
@@ -221,7 +241,12 @@ class NetworkService {
 
 }
         
-        
+     
+enum PostType: String {
+    case post
+    case photo
+}
+
 
 
 

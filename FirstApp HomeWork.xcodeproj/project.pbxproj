@@ -62,6 +62,13 @@
 		E6E990E327872C0B009787B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E990E127872C0B009787B8 /* Main.storyboard */; };
 		E6E990E527872C0C009787B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E990E427872C0C009787B8 /* Assets.xcassets */; };
 		E6E990E827872C0C009787B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E990E627872C0C009787B8 /* LaunchScreen.storyboard */; };
+		E6ED1CC42860FF090005B66D /* UIColor+ApplicationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED1CC32860FF090005B66D /* UIColor+ApplicationColors.swift */; };
+		E6ED1CC728634B8D0005B66D /* APIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED1CC628634B8D0005B66D /* APIAdapter.swift */; };
+		E6ED1CC928635FE50005B66D /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED1CC828635FE50005B66D /* AppSettings.swift */; };
+		E6ED1CCC286361500005B66D /* UserViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED1CCB286361500005B66D /* UserViewModelFactory.swift */; };
+		E6ED1CCE286367CD0005B66D /* GroupViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED1CCD286367CD0005B66D /* GroupViewModelFactory.swift */; };
+		E6ED1CD0286368140005B66D /* PhotoViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED1CCF286368140005B66D /* PhotoViewModelFactory.swift */; };
+		E6ED1CD2286368800005B66D /* NewsSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED1CD1286368800005B66D /* NewsSectionFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +130,13 @@
 		E6E990E427872C0C009787B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6E990E727872C0C009787B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6E990E927872C0C009787B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6ED1CC32860FF090005B66D /* UIColor+ApplicationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ApplicationColors.swift"; sourceTree = "<group>"; };
+		E6ED1CC628634B8D0005B66D /* APIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAdapter.swift; sourceTree = "<group>"; };
+		E6ED1CC828635FE50005B66D /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		E6ED1CCB286361500005B66D /* UserViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelFactory.swift; sourceTree = "<group>"; };
+		E6ED1CCD286367CD0005B66D /* GroupViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModelFactory.swift; sourceTree = "<group>"; };
+		E6ED1CCF286368140005B66D /* PhotoViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModelFactory.swift; sourceTree = "<group>"; };
+		E6ED1CD1286368800005B66D /* NewsSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSectionFactory.swift; sourceTree = "<group>"; };
 		EA83B58581843617D1DF6759 /* Pods-FirstApp HomeWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstApp HomeWork.release.xcconfig"; path = "Target Support Files/Pods-FirstApp HomeWork/Pods-FirstApp HomeWork.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -287,6 +301,7 @@
 		E6D984DE27D4ECDF009578CD /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E6ED1CC828635FE50005B66D /* AppSettings.swift */,
 				E64A2F7127C56FFC008BC2D4 /* Session.swift */,
 				E660EA3927B993EC004054F8 /* Structure */,
 				E6D984E127D4ED73009578CD /* NetworkPath */,
@@ -340,6 +355,9 @@
 		E6E990DA27872C0B009787B8 /* FirstApp HomeWork */ = {
 			isa = PBXGroup;
 			children = (
+				E6ED1CCA286361360005B66D /* Factory */,
+				E6ED1CC528634B6D0005B66D /* Adapter */,
+				E6ED1CC22860FEE50005B66D /* Flyweight */,
 				E65B694B280C7FD900235BD9 /* Core */,
 				E64EEF1C279D4DE50001748F /* Screens */,
 				E6D984DE27D4ECDF009578CD /* Services */,
@@ -353,6 +371,33 @@
 				E64A2F2227C39155008BC2D4 /* Core Data1.xcdatamodeld */,
 			);
 			path = "FirstApp HomeWork";
+			sourceTree = "<group>";
+		};
+		E6ED1CC22860FEE50005B66D /* Flyweight */ = {
+			isa = PBXGroup;
+			children = (
+				E6ED1CC32860FF090005B66D /* UIColor+ApplicationColors.swift */,
+			);
+			path = Flyweight;
+			sourceTree = "<group>";
+		};
+		E6ED1CC528634B6D0005B66D /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				E6ED1CC628634B8D0005B66D /* APIAdapter.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		E6ED1CCA286361360005B66D /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				E6ED1CCB286361500005B66D /* UserViewModelFactory.swift */,
+				E6ED1CCD286367CD0005B66D /* GroupViewModelFactory.swift */,
+				E6ED1CCF286368140005B66D /* PhotoViewModelFactory.swift */,
+				E6ED1CD1286368800005B66D /* NewsSectionFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,9 +520,11 @@
 			files = (
 				E660EA3827B993DC004054F8 /* DataSettings.swift in Sources */,
 				E6D31FA827E08ECA00673A1D /* VKGroups.swift in Sources */,
+				E6ED1CC728634B8D0005B66D /* APIAdapter.swift in Sources */,
 				E64EEF26279D5D600001748F /* Group.swift in Sources */,
 				E6C982E027E8EA7A00365342 /* VKPhotoSize.swift in Sources */,
 				E678AE1927DBCD6900A0BCD6 /* AllGroupsTableViewController.swift in Sources */,
+				E6ED1CD2286368800005B66D /* NewsSectionFactory.swift in Sources */,
 				E678AE1D27DBE15900A0BCD6 /* FriendPhotoCell.swift in Sources */,
 				E657CF9C27A70681000FF02F /* FotoCollectionViewCell.swift in Sources */,
 				E660EA3227B98843004054F8 /* GalleryPhotoCustomView.swift in Sources */,
@@ -487,6 +534,7 @@
 				E64A2F2427C39155008BC2D4 /* Core Data1.xcdatamodeld in Sources */,
 				E678099D282312790008A471 /* AuthorNewsTableViewCell.swift in Sources */,
 				E6E990E027872C0B009787B8 /* LoginViewController.swift in Sources */,
+				E6ED1CCE286367CD0005B66D /* GroupViewModelFactory.swift in Sources */,
 				E65C822927AF0BC10045C217 /* NewsCollectionViewCell.swift in Sources */,
 				E65ED9152831B6980006A8EB /* News2ViewController.swift in Sources */,
 				E660EA3627B98ACA004054F8 /* GalleryPhotoViewController.swift in Sources */,
@@ -508,19 +556,23 @@
 				E678AE1727DBC88600A0BCD6 /* GroupCell.swift in Sources */,
 				E657CF9F27A7112A000FF02F /* FriendsFotoCollectionViewController.swift in Sources */,
 				E6C982DE27E8E5F100365342 /* VKPhoto.swift in Sources */,
+				E6ED1CCC286361500005B66D /* UserViewModelFactory.swift in Sources */,
 				E6D31FA427DFB0C000673A1D /* VKResponse.swift in Sources */,
 				E6D31FA227DFA6F300673A1D /* VKItems.swift in Sources */,
 				E6CCB96527E5346A0035768A /* RealmGroup.swift in Sources */,
+				E6ED1CC42860FF090005B66D /* UIColor+ApplicationColors.swift in Sources */,
 				E64EEF28279D5DF80001748F /* GlobalGroupTableViewController.swift in Sources */,
 				E6CCB96727E5356D0035768A /* RealmPhoto.swift in Sources */,
 				E64EEF1E279D4E5D0001748F /* FriendsTableViewController.swift in Sources */,
 				E6E990DE27872C0B009787B8 /* SceneDelegate.swift in Sources */,
+				E6ED1CD0286368140005B66D /* PhotoViewModelFactory.swift in Sources */,
 				E6D984EA27D62F9F009578CD /* UserTableViewController.swift in Sources */,
 				E6C6AC5927EDC93E00ABFDDD /* SomeEntity+CoreDataClass.swift in Sources */,
 				E6C6AC5627EDC49800ABFDDD /* RealmService.swift in Sources */,
 				E64EEF21279D52D00001748F /* User.swift in Sources */,
 				E6D984E327D4EE04009578CD /* VKLoginController.swift in Sources */,
 				E65C822C27AF2CB00045C217 /* NewsViewController.swift in Sources */,
+				E6ED1CC928635FE50005B66D /* AppSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

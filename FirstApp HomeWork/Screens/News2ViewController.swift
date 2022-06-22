@@ -19,9 +19,6 @@ enum NewsScreen: Int {
 
 final class News2ViewController: UIViewController {
     
-
-
-    
     
     @IBOutlet weak var newsTableView: UITableView! {
         didSet {
@@ -114,7 +111,6 @@ final class News2ViewController: UIViewController {
             }
         })
     }
-    
 }
 
 
