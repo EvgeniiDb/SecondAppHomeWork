@@ -8,9 +8,12 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RealmSwift
+import PromiseKit
 
 
-final class NetworkService {
+class NetworkService: APIAdapter {
+    
 
     private let apiVersion = "5.131"
 
@@ -28,9 +31,49 @@ final class NetworkService {
         }()
         return urlComponent
     }
+    
+    
+    
+    func joinGroup(groupID: Int, completion: @escaping (Bool) -> Void) {
+        if let realm = try? Realm(configuration: RealmService.config) {
+            guard let group = realm.objects(Group.self)
+                .filter("id == %@", groupID).first
+            else { return }
+            realmNotificationTokens[.group]?.invalidate()
+            let token = realm.objects(Group.self).observe { [weak self] changes in
+                switch changes {
+                case .initial:
+                    break
+                case .update(_, let deleted, _, _):
+                    completion(!deleted.isEmpty)
+                case .error(let error):
+                    fatalError("\(error)")
+                }
+            }
+            NotificationToken[.group] = token
+            AppSettings
+                .instance
+                .queuedService
+                .joinGroup(group: group)
+        }
+    }
+    
+    func getImage(url: String, completion: @escaping (UIImage?) -> Void) {
+        AppSettings.instance.photoService.getImage(urlString: url, completion: {
+            [weak self] image in
+            completion(image)
+        })
+    }
+    
+    func loadImage(placeholderImage: UIImage?, toImageView: UIImageView?, url: String, onFailureImage: UIImage?) {
+        AppSettings.instance.photoService.loadImage(placeholderImage: placeholderImage,
+                                                    toImageView: toImageView,
+                                                    url: url,
+                                                    onFailureImage: onFailureImage)
+    }
 
     func getUserPhotos(
-        userID: Int,
+        UserID userID: Int,
         completion: @escaping ([VKPhoto]?) -> Void) {
         var urlComponets = makeComponents(for: .getAllPhotos)
         urlComponets.queryItems?.append(contentsOf: [
@@ -58,6 +101,31 @@ final class NetworkService {
         }
     }
     
+    func getUserFriendsPromise() -> Promise<[JSON]> {
+        var urlComponents = makeComponents(for: .getFriends)
+        urlComponents.queryItems?.append(contentsOf: [
+            URLQueryItem(name: "fields", value: "photo_200"),
+        ])
+        
+        
+        return Promise { seal in
+            if let url = urlComponents.url {
+                AF
+                    .request(url)
+                    .responseData { response in
+                        switch response.result {
+                        case .success(let data):
+                            let json = JSON(data)
+                            seal.fulfill(json["response"]["items"].arrayValue)
+                        case .failure(let error):
+                            seal.reject(error)
+                        }
+                    }
+            }
+        }
+    }
+    
+    
     func getUserFriends(completion: @escaping ([RealmUser]?) -> Void) {
         var urlComponents = makeComponents(for: .getFriends)
         urlComponents.queryItems?.append(contentsOf: [
@@ -84,7 +152,7 @@ final class NetworkService {
         }
     }
 
-    func getUserGroups(completion: @escaping ([RealmUser]?) -> Void) {
+    func getUserGroups(completion: @escaping ([RealmGroup]?) -> Void) {
         var urlComponents = makeComponents(for: .getGroups)
         urlComponents.queryItems?.append(contentsOf: [
             URLQueryItem(name: "userAvatarURL", value: "photo_200"),
@@ -97,8 +165,11 @@ final class NetworkService {
                     switch response.result {
                     case .success(let data):
                         let json = JSON(data)
-                        let usersJSONs = json["response"]["items"].arrayValue
-                        let vkUsers = usersJSONs.map { VKGroup($0) }
+                        let groupsJSONs = json["response"]["items"].arrayValue
+                        let vkGroups = groupsJSONs.map { RealmGroup($0) }
+                        DispatchQueue.main.async {
+                            completion(vkGroups)
+                        }
                     case .failure(let error):
                         print(error)
                         completion(nil)
@@ -111,7 +182,15 @@ final class NetworkService {
     func getUserNews(completion: @escaping ([RealmNews]?) -> Void) {
         var urlComponents = makeComponents(for: .getNews)
         urlComponents.queryItems?.append(contentsOf: [
-            URLQueryItem(name: "fields", value: "photo_200"),
+            URLQueryItem(name: "users", value: "wall"),
+            URLQueryItem(name: "user_id", value: UserSession.instance.userIdString),
+            URLQueryItem(name: "filters", value: "post"),
+            URLQueryItem(name: "return_banned", value: "0"),
+            URLQueryItem(name: "max_photos", value: "1"),
+            URLQueryItem(name: "source_ids", value: "groups"),
+            URLQueryItem(name: "count", value: "5"),
+            URLQueryItem(name: "access_token", value: UserSession.instance.token),
+            URLQueryItem(name: "v", value: "5.131"),
         ])
         
         if let url = urlComponents.url {
@@ -139,30 +218,35 @@ final class NetworkService {
     
     
     
-//    func getGlobalGroupSearch(searchText:String) {
-//        var urlComponents = makeComponents(for: .getGlobalGroupsSearch)
-//        urlComponents.queryItems?.append(contentsOf: [
-//            URLQueryItem(name: "q", value: searchText),
-//        ])
-//
-//        let session = URLSession(configuration: URLSessionConfiguration.default)
-//        if let url = urlComponents.url {
-//            session.dataTask(with: url) { (data, response, error) in
-//                if let data = data {
-//                    print(try? JSONSerialization.jsonObject(
-//                        with: data,
-//                        options: .allowFragments))
-//                }
-//            }
-//            .resume()
-//        }
-//    }
+    func getGlobalGroupSearch(searchText:String) {
+        var urlComponents = makeComponents(for: .getGlobalGroupsSearch)
+        urlComponents.queryItems?.append(contentsOf: [
+            URLQueryItem(name: "q", value: searchText),
+        ])
+
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        if let url = urlComponents.url {
+            session.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    print(try? JSONSerialization.jsonObject(
+                        with: data,
+                        options: .allowFragments))
+                }
+            }
+            .resume()
+        }
+    }
 
     
 
 }
         
-        
+     
+enum PostType: String {
+    case post
+    case photo
+}
+
 
 
 
