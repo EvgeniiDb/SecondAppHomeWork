@@ -12,6 +12,8 @@ class FriendPhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var friendPhotoImageView: UIImageView!
     
+    
+    
     func loadImage(_ url: String) {
         Task(priority: .background) {
             do {

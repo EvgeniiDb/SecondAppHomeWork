@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 class LoaderPhotoProxy: LoaderImage {
     static var shared: LoaderImage = LoaderImageLayerProxy()
 

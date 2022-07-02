@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import Alamofire
 
+
 protocol LoaderImage {
     static var shared: LoaderImage { get }
     func loadAsync(url: String, cache: Cache) async throws -> UIImage
