@@ -15,9 +15,14 @@ class UserCell: UITableViewCell {
     
     func configure(
         imageURL: String,
-        name: String) {
-        userAvatarImage.kf.setImage(with: URL(string: imageURL))
+        name: String,
+        photoService: PhotoService) {
         userNameLabel.text = name
+            photoService.getImage(urlString: imageURL) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.userAvatarImage.image = image
+                }
+            }
     }
 }
 

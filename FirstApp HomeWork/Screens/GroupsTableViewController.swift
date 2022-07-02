@@ -11,9 +11,8 @@ import RealmSwift
 class GroupsTableViewController: UITableViewController {
 
     private let networkService = NetworkService()
-    private let groups = try? RealmService.load(typeOf: RealmGroup.self)
+    private var groups = try? RealmService.load(typeOf: RealmGroup.self)
     private var token: NotificationToken?
-    
     
     
 //    @IBAction func addGroup(segue: UIStoryboardSegue) {
@@ -22,6 +21,7 @@ class GroupsTableViewController: UITableViewController {
 //            let allGroupsController = segue.source as? AllGroupsTableViewController,
 //            let indexPath = allGroupsController.tableView.indexPathForSelectedRow
 //        else { return }
+//        
 //        let group = allGroupsController.groups[indexPath.row]
 //        if !groups.contains(group) {
 //            groups.append(group)
@@ -33,27 +33,18 @@ class GroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         observeRealm()
-        //print(users) //смотреть в Realm Studio через Breakpoint
-        networkService.getUserGroups { [weak self] VKGroup in
+        //print(groups) //смотреть в Realm Studio через Breakpoint
+        networkService.getUserGroups { [weak self] VKGroups in
             guard
                 let self = self,
-                let group = VKGroup
+                let group = VKGroups
             else { return }
             try? RealmService.save(items: group)
-//            self.friends = friends
+            //self.group = group
+
         }
     }
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        networkService.getUserGroups { [weak self] VKGroups in
-//            guard
-//                let self = self,
-//                let groups = VKGroups
-//            else { return }
-//            self.groups = groups
-//        }
-//    }
+
 
     private func observeRealm() {
         token = groups?.observe({ changes in
@@ -80,13 +71,14 @@ class GroupsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as? GroupCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as? GroupCell,
+            let currentGroup = groups?[indexPath.row]
         else { return UITableViewCell() }
         
-        let currentGroup = groups?[indexPath.row]
+        
         cell.configure(
-            imageURL: currentGroup!.userAvatarURL,
-            name: currentGroup!.firstName)
+            imageURL: currentGroup.userAvatarURL,
+            name: currentGroup.firstName)
         
         return cell
     }

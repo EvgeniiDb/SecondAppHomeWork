@@ -12,7 +12,20 @@ class FriendPhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var friendPhotoImageView: UIImageView!
     
-    func configure(imageURL: String) {
-        friendPhotoImageView.kf.setImage(with: URL(string: imageURL))
+    
+    
+    func loadImage(_ url: String) {
+        Task(priority: .background) {
+            do {
+                self.imageView.image = try await LoaderImageLayerProxy.shared.loadAsync(url: url, cache: .fileCache)
+            } catch {
+                print(error)
+            }
+        }
     }
-}
+    
+    
+//    func configure(imageURL: String) {
+//        friendPhotoImageView.kf.setImage(with: URL(string: imageURL))
+//    }
+//}
