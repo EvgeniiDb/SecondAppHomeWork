@@ -52,6 +52,7 @@
 		E6D31FA427DFB0C000673A1D /* VKResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D31FA327DFB0C000673A1D /* VKResponse.swift */; };
 		E6D31FA827E08ECA00673A1D /* VKGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D31FA727E08ECA00673A1D /* VKGroups.swift */; };
 		E6D31FAA27E0938F00673A1D /* VKUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D31FA927E0938F00673A1D /* VKUser.swift */; };
+		E6D754DE287082BE004DA3F3 /* LoaderPhotoProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D754DD287082BE004DA3F3 /* LoaderPhotoProxy.swift */; };
 		E6D984E027D4ED0E009578CD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D984DF27D4ED0E009578CD /* NetworkService.swift */; };
 		E6D984E327D4EE04009578CD /* VKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D984E227D4EE04009578CD /* VKLoginController.swift */; };
 		E6D984E527D4F161009578CD /* NetworkPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D984E427D4F161009578CD /* NetworkPaths.swift */; };
@@ -118,6 +119,7 @@
 		E6D31FA327DFB0C000673A1D /* VKResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKResponse.swift; sourceTree = "<group>"; };
 		E6D31FA727E08ECA00673A1D /* VKGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroups.swift; sourceTree = "<group>"; };
 		E6D31FA927E0938F00673A1D /* VKUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKUser.swift; sourceTree = "<group>"; };
+		E6D754DD287082BE004DA3F3 /* LoaderPhotoProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderPhotoProxy.swift; sourceTree = "<group>"; };
 		E6D984DF27D4ED0E009578CD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E6D984E227D4EE04009578CD /* VKLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginController.swift; sourceTree = "<group>"; };
 		E6D984E427D4F161009578CD /* NetworkPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPaths.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				E6D984DF27D4ED0E009578CD /* NetworkService.swift */,
 				E6C6AC5527EDC49800ABFDDD /* RealmService.swift */,
 				E6BFFA7A282A80F000B4454B /* PhotoService.swift */,
+				E6D754DD287082BE004DA3F3 /* LoaderPhotoProxy.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				E6BFFA7B282A80F000B4454B /* PhotoService.swift in Sources */,
 				E64EEF2C279D67E50001748F /* UserGroupTableViewController.swift in Sources */,
 				E678AE1727DBC88600A0BCD6 /* GroupCell.swift in Sources */,
+				E6D754DE287082BE004DA3F3 /* LoaderPhotoProxy.swift in Sources */,
 				E657CF9F27A7112A000FF02F /* FriendsFotoCollectionViewController.swift in Sources */,
 				E6C982DE27E8E5F100365342 /* VKPhoto.swift in Sources */,
 				E6ED1CCC286361500005B66D /* UserViewModelFactory.swift in Sources */,

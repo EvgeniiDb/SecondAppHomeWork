@@ -9,6 +9,19 @@ import UIKit
 import Foundation
 import Alamofire
 
+protocol LoaderImage {
+    static var shared: LoaderImage { get }
+    func loadAsync(url: String, cache: Cache) async throws -> UIImage
+}
+
+// перечислены режимы работы кэш-я
+enum Cache {
+    case fileCache
+    case nsCache
+    case off
+}
+
+
 final class PhotoService {
     
     private var memoryCache = [String: UIImage]()
